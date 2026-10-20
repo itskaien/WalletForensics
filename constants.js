@@ -1,0 +1,9 @@
+export const constant = {
+  BREAK_HOURS: 4,
+  STREAK_MIN: 3,
+  DUST_SOL: 0.01,
+  BIG_LOSS_PCT: 10,
+  LOCKOUT_HOURS: 24,
+  OVERTRADE_PERCENTILE: 60,
+  MIN_LOSSES: 8,
+};
