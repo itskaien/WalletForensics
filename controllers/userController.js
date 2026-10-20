@@ -1,7 +1,8 @@
 const { PublicKey } = require("@solana/web3.js");
 const { connection } = require("../src/config/solana");
 
-const SOLANA_BASE58_REGEX = /^[1-9A-HJ-NP-Za-km-z]{32,44}\$/;
+const SOLANA_BASE58_REGEX = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
+const SYSTEM_PROGRAM_ID = "11111111111111111111111111111111";
 
 async function validateForensicAddress(address) {
   if (!address || typeof address !== "string") {
@@ -32,25 +33,71 @@ async function validateForensicAddress(address) {
     }
 
     const isOnCurve = PublicKey.isOnCurve(bytes);
-    const systemProgramId = "11111111111111111111111111111111";
-    const isNativeSystemAccount = address === systemProgramId;
+    const isNativeSystemAccount = address === SYSTEM_PROGRAM_ID;
 
     let existOnChain = false;
     let accountType = "UNKNOWN";
     let balanceLamports = 0;
+    let owner = null;
+    let executable = false;
+    let hadActivity = null;
+    let lastActivitySlot = null;
+    let lastActivityTime = null;
 
     try {
       const accountInfo = await connection.getAccountInfo(pubKey);
+
       if (accountInfo !== null) {
         existOnChain = true;
         balanceLamports = accountInfo.lamports;
+        owner = accountInfo.owner.toBase58();
+        executable = accountInfo.executable;
+        hadActivity = true;
 
-        if (accountInfo.executable) {
-          accountType = "SMART_CONTRACT_PROGRAM";
-        } else if (!isOnCurve) {
-          accountType = "PROGRAM_DERIVED_ADDRESS_OR_TOKEN_ACCOUNT";
-        } else {
+        if (executable) {
+          accountType = "PROGRAM";
+        } else if (owner === SYSTEM_PROGRAM_ID) {
           accountType = "USER_WALLET";
+        } else if (!isOnCurve) {
+          accountType = "PDA";
+        } else {
+          accountType = "PROGRAM_OWNED_ACCOUNT";
+        }
+      } else {
+        if (isNativeSystemAccount) {
+          accountType = "SYSTEM_PROGRAM";
+          hadActivity = true;
+        } else {
+          try {
+            const sigs = await connection.getSignaturesForAddress(pubKey, {
+              limit: 1,
+            });
+            hadActivity = Array.isArray(sigs) && sigs.length > 0;
+
+            if (hadActivity) {
+              lastActivitySlot = sigs[0].slot ?? null;
+              lastActivityTime = sigs[0].blockTime ?? null;
+            }
+          } catch (histErr) {
+            console.error("History lookup failed:", histErr.message);
+            hadActivity = null;
+          }
+
+          if (isOnCurve) {
+            accountType =
+              hadActivity === true
+                ? "EMPTY_WALLET"
+                : hadActivity === false
+                  ? "UNUSED_WALLET"
+                  : "ON_CURVE_HISTORY_UNKNOWN";
+          } else {
+            accountType =
+              hadActivity === true
+                ? "EMPTY_PDA"
+                : hadActivity === false
+                  ? "UNUSED_PDA"
+                  : "OFF_CURVE_HISTORY_UNKNOWN";
+          }
         }
       }
     } catch (rpcErr) {
@@ -62,10 +109,23 @@ async function validateForensicAddress(address) {
           isOnCurve,
           isNativeSystemAccount,
           existOnChain: null,
-          accountType,
+          accountType: isOnCurve
+            ? "ON_CURVE_RPC_FAILED"
+            : "OFF_CURVE_RPC_FAILED",
+          hadActivity: null,
+          lastActivitySlot: null,
+          lastActivityTime: null,
         },
       };
     }
+
+    const balanceSol = Number(balanceLamports) / 1_000_000_000;
+
+    let lastActivityIso = null;
+    if (lastActivityTime !== null) {
+      lastActivityIso = new Date(Number(lastActivityTime) * 1000);
+    }
+
     return {
       isValid: true,
       reason: "SUCCESS",
@@ -74,7 +134,15 @@ async function validateForensicAddress(address) {
         isNativeSystemAccount,
         existOnChain,
         accountType,
-        balanceSol: balanceLamports / 1_000_000_000,
+        balanceSol,
+        owner,
+        executable,
+        hadActivity,
+        lastActivitySlot:
+          lastActivitySlot != null ? Number(lastActivitySlot) : null,
+        lastActivityTime:
+          lastActivityTime != null ? Number(lastActivityTime) : null,
+        lastActivityIso,
       },
     };
   } catch (err) {
@@ -98,9 +166,10 @@ exports.usersSolanaInput = async (req, res) => {
       details: result.details,
     });
   }
+
   return res.status(200).json({
     valid: true,
-    address: address,
+    address,
     profile: result.profile,
   });
 };

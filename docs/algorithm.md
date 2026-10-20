@@ -12,7 +12,7 @@
 4. Validate input:
 
 - base58, 32 to 44 characters
-- Validate via express-validator
+- Validate
 - Bad input: 400
 
 5. Fetch Data:
