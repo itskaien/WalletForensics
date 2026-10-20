@@ -102,6 +102,7 @@ async function validateForensicAddress(address) {
       }
     } catch (rpcErr) {
       console.error("Forensic RPC data lookup failed:", rpcErr.message);
+      console.error("Full error:", rpcErr);
       return {
         isValid: true,
         reason: "CRYPTO_PASSED_RPC_DEGRADED",
