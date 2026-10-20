@@ -6,13 +6,12 @@ const indexRouter = require("./routes/indexRouter");
 
 app.use("/", indexRouter);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+app.listen(PORT, (error) => {
+  if (error) {
+    throw error;
+  }
+
   console.log(`Server is running on port ${PORT}`);
-});
-
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(err.statusCode || 500).send(err.message);
 });
