@@ -1,7 +1,12 @@
 const SOL_MINT = "So11111111111111111111111111111111111111112";
+const LAMPORTS_PER_SOL = 1_000_000_000;
 
 function normalizeSwaps(transactions, walletAddress) {
-  return transactions.map((tx) => {
+  const successfulTransactions = transactions.filter(
+    (tx) => tx.transactionError == null,
+  );
+
+  return successfulTransactions.flatMap((tx) => {
     const tokenMovements = (tx.tokenTransfers || [])
       .filter((transfer) => transfer.mint !== SOL_MINT)
       .filter(
@@ -27,8 +32,6 @@ function normalizeSwaps(transactions, walletAddress) {
         direction: transfer.toUserAccount === walletAddress ? "IN" : "OUT",
       }));
 
-    const LAMPORTS_PER_SOL = 1_000_000_000;
-
     const nativeSolMovements = (tx.nativeTransfers || [])
       .filter(
         (transfer) =>
@@ -42,6 +45,16 @@ function normalizeSwaps(transactions, walletAddress) {
         from: transfer.fromUserAccount,
         to: transfer.toUserAccount,
       }));
+
+    const hasMovement = [
+      ...tokenMovements.map((movement) => movement.amount),
+      ...solMovements.map((movement) => movement.amount),
+      ...nativeSolMovements.map((movement) => movement.amountLamports),
+    ].some((amount) => amount > 0);
+
+    if (!hasMovement) {
+      return [];
+    }
 
     return {
       signature: tx.signature,
