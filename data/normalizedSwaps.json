@@ -1,0 +1,1136 @@
+[
+  {
+    "sig": "39ZDtSMEA2C8jdwmrEPcbYTHYgd2tJpii943iV67CJFM57Xur6PyECnsiQwUWFKMBwecGwkKmJsRoFhtgwRdFpNx",
+    "ts": 1756301871,
+    "date": "2025-08-27T13:37:51.000Z",
+    "mint": "8kS3v66xtYZ8mF2MH9SSD7o9Wi3ujt6wzPqy4Bq1pump",
+    "side": "SELL",
+    "sol": 0.003702781,
+    "tokenQty": 31133.813537
+  },
+  {
+    "sig": "3dddM6A8wze6aZbSKLDM1B8RbNjfzpTHGaqa8vkvtKf8cyRuc5QU9kQ44NYwpQ1SYfnPnvEeadBoyYg4Dc2B1BfB",
+    "ts": 1756300918,
+    "date": "2025-08-27T13:21:58.000Z",
+    "mint": "8kS3v66xtYZ8mF2MH9SSD7o9Wi3ujt6wzPqy4Bq1pump",
+    "side": "BUY",
+    "sol": 0.009932686000000001,
+    "tokenQty": 31133.813537
+  },
+  {
+    "sig": "55Mbxw6WhNWKUTxLZRaeoHPomyLvMXypKYgSupWcxWF6DbXnjp2X3RzXZRxdfbgLYbaMqMazfwjTKokvdzjKB14o",
+    "ts": 1756298570,
+    "date": "2025-08-27T12:42:50.000Z",
+    "mint": "4p5p6y1Nb5Ek8GPyhqnkSSy9eGnRY2KAnxU558XPpump",
+    "side": "SELL",
+    "sol": 0.009605725,
+    "tokenQty": 28392.588426
+  },
+  {
+    "sig": "29tzkMbgABYAVAHnSPzntJy4zhLLZ85zxMFs9ULuxBDTDXbjXuLGgzwARrefxwbB7qWhpRZezY1kGhJBFjxUKWCM",
+    "ts": 1756297279,
+    "date": "2025-08-27T12:21:19.000Z",
+    "mint": "4p5p6y1Nb5Ek8GPyhqnkSSy9eGnRY2KAnxU558XPpump",
+    "side": "BUY",
+    "sol": 0.014850001,
+    "tokenQty": 28392.588426
+  },
+  {
+    "sig": "tuE1embSZzTQshQwq4nBJG3xDRTtCKW4aDVj1QjPv3dkEvwz3ZsrHbL84qRD21xmn9e9RoMAectgfmdGxNYTn2W",
+    "ts": 1755557250,
+    "date": "2025-08-18T22:47:30.000Z",
+    "mint": "FH9aJpbc3xzsratkWJJ8U9nkGXtHQorrAmMzS6WHpump",
+    "side": "SELL",
+    "sol": 0.013140372,
+    "tokenQty": 42791.81929
+  },
+  {
+    "sig": "4ju6jFYLeXN2n65fk3piBtwGZZNnNAGZatCjfTvXjKbuqq2pFawy3ZNsoqjJTPvBjXdU6Xf3jYVZ93UJ8jhnAK2J",
+    "ts": 1753384293,
+    "date": "2025-07-24T19:11:33.000Z",
+    "mint": "8vrZR1pKCjFtPt5pNP8vd8d5hM7saDUcMMFk1nx1BAGS",
+    "side": "SELL",
+    "sol": 0.037165817,
+    "tokenQty": 65139.268741173
+  },
+  {
+    "sig": "4JGpN7f4wkMi8yxc4R5q4uo5YQDSpYQw7wGGJkDrkwdwjNHYiG8y2h7pWw41W8CXsJWAKKMTMQ4n2qTTUt3asmVR",
+    "ts": 1753384119,
+    "date": "2025-07-24T19:08:39.000Z",
+    "mint": "8vrZR1pKCjFtPt5pNP8vd8d5hM7saDUcMMFk1nx1BAGS",
+    "side": "BUY",
+    "sol": 0.0495,
+    "tokenQty": 65139.268741173
+  },
+  {
+    "sig": "4vHtYKX3AHnoGRnpbz3DEa5EhuAqYwaPkVLPsK3G6a3neHXNfxSHAe57B2DQmtZfJPqrsxWFQJvbpQKJPvPng1hF",
+    "ts": 1752883280,
+    "date": "2025-07-19T00:01:20.000Z",
+    "mint": "HibC3jm1oq2jVzMR2NSX7xdCNnsGLQ13yK8FEkmhpump",
+    "side": "SELL",
+    "sol": 0.07964323,
+    "tokenQty": 20202.073675
+  },
+  {
+    "sig": "5nMrfXPfX2ZCqg4xSGXHc1mQdkCb1TQ8uCjQ6Xs2AAqyamvYcxz5pPWsbw5DKP6sNAzb94BVh8ZZZEMbCavacbpu",
+    "ts": 1752881843,
+    "date": "2025-07-18T23:37:23.000Z",
+    "mint": "HibC3jm1oq2jVzMR2NSX7xdCNnsGLQ13yK8FEkmhpump",
+    "side": "BUY",
+    "sol": 0.0495,
+    "tokenQty": 20202.073675
+  },
+  {
+    "sig": "4bdqZ4jxNpp6HWDNsC1NRZw1gBsAGaCxgkhkzz7V91RBJJG89HTQaM6LoFvFairKA8UBcTuKndbAVQ8eurXwdX4T",
+    "ts": 1752622123,
+    "date": "2025-07-15T23:28:43.000Z",
+    "mint": "2zyXsUNb5N8D92f6ARyQszWZ3dpC1rEew8iX6QRZpump",
+    "side": "SELL",
+    "sol": 0.023041676,
+    "tokenQty": 16318.067652
+  },
+  {
+    "sig": "ZW1LVjGMzEvFPN4hyCPQ3aytkVp9bSEjdwDJCT3UzuSUQizG4UDf8DJQUbaB8c5DL4E3KC1tgNrk7v6WfX2xrtr",
+    "ts": 1752612357,
+    "date": "2025-07-15T20:45:57.000Z",
+    "mint": "2zyXsUNb5N8D92f6ARyQszWZ3dpC1rEew8iX6QRZpump",
+    "side": "BUY",
+    "sol": 0.0495,
+    "tokenQty": 16318.067652
+  },
+  {
+    "sig": "3nXg1SbT6VVBBYu69FGpykC21D9Gcas9CgKQMWTG9HfgpukpkTy9C6uZt4krxX9jSTUUPhiZaLQndUesCzJDfDnM",
+    "ts": 1752596724,
+    "date": "2025-07-15T16:25:24.000Z",
+    "mint": "WC7Awj7NppEf2YjonhexE71UNrzK5aBZnDR1MVmpump",
+    "side": "SELL",
+    "sol": 0.054331119,
+    "tokenQty": 1978.89169
+  },
+  {
+    "sig": "xMEqhydqhACTdyzgmu4V9t2hHqAEBqeF8syaj51E15kbtrbDCcPhZHui7UDfGGGt4oPE1fWhMS7SFYv2cNjXcVH",
+    "ts": 1752596318,
+    "date": "2025-07-15T16:18:38.000Z",
+    "mint": "WC7Awj7NppEf2YjonhexE71UNrzK5aBZnDR1MVmpump",
+    "side": "BUY",
+    "sol": 0.050970047,
+    "tokenQty": 1978.89169
+  },
+  {
+    "sig": "2fwKxNqya1yqoFXVWDtBeRCvU77tpXejbYSd6pnfw2AYWTdXsQgd5cu9NBDddfRHYQonqtJxq24oZTYQhdrpvMnu",
+    "ts": 1752561318,
+    "date": "2025-07-15T06:35:18.000Z",
+    "mint": "bdLQmPP6R31Qfz6ho1ArxnrLbXPM2Ydmo694PqRbonk",
+    "side": "SELL",
+    "sol": 0.153649589,
+    "tokenQty": 66109.60194
+  },
+  {
+    "sig": "ee4jnKVMi2SPPJxykUrzWNizTEhaXuKspnxfWpGSyq9YH2g51SZxtG2F72mxNYQbUJazcoL9v5Dp3bgyvYDv58x",
+    "ts": 1752558802,
+    "date": "2025-07-15T05:53:22.000Z",
+    "mint": "bdLQmPP6R31Qfz6ho1ArxnrLbXPM2Ydmo694PqRbonk",
+    "side": "BUY",
+    "sol": 0.0198,
+    "tokenQty": 15105.134396
+  },
+  {
+    "sig": "2qx6S6MaiUdJSbzgYgdH1h34mZ7HN7ibS7vdPgotw1jUSguyQLYEcgAV4YaZGJ8kXAMKKWq5jDoWpj5mTTkrtK5h",
+    "ts": 1752558652,
+    "date": "2025-07-15T05:50:52.000Z",
+    "mint": "bdLQmPP6R31Qfz6ho1ArxnrLbXPM2Ydmo694PqRbonk",
+    "side": "BUY",
+    "sol": 0.0297,
+    "tokenQty": 20050.060421
+  },
+  {
+    "sig": "3XTrEjmhVHDqYDsw4GqqhCSmS6ikf7nW3XAyawh239jE4cQK3wH6SqyU24FrdKTZZW6oaBdxg7UdcHCTo9ZF1p7p",
+    "ts": 1752558597,
+    "date": "2025-07-15T05:49:57.000Z",
+    "mint": "bdLQmPP6R31Qfz6ho1ArxnrLbXPM2Ydmo694PqRbonk",
+    "side": "BUY",
+    "sol": 0.0495,
+    "tokenQty": 30954.407123
+  },
+  {
+    "sig": "PbU6wLbmRAdxY4NWYqts9vK1yZehMKMxdR8e21U4jLb3my6yaRhK2b1xLeiKSFpw7F9xyAroMrajGLNQK64vAUE",
+    "ts": 1752558488,
+    "date": "2025-07-15T05:48:08.000Z",
+    "mint": "bdLQmPP6R31Qfz6ho1ArxnrLbXPM2Ydmo694PqRbonk",
+    "side": "SELL",
+    "sol": 0.010645686,
+    "tokenQty": 5692.90665
+  },
+  {
+    "sig": "479tMchjL5s8eV842nvMXpmUdBfKUTNpza6W5Zwtzt7TFkY1Jwy4kVB65M1edoVRkGYsTog1DSAa2Y7H9rUWcBF6",
+    "ts": 1752558149,
+    "date": "2025-07-15T05:42:29.000Z",
+    "mint": "bdLQmPP6R31Qfz6ho1ArxnrLbXPM2Ydmo694PqRbonk",
+    "side": "BUY",
+    "sol": 0.0099,
+    "tokenQty": 5692.90665
+  },
+  {
+    "sig": "4pYQ8JRBttPJEcD3wZf41GqxGoKioJMrJARrWgjjZhmpdeTYrYAdnYDGpmRvjeQseRgTiD5v25SFD8mDAoYpN1Bf",
+    "ts": 1751991599,
+    "date": "2025-07-08T16:19:59.000Z",
+    "mint": "714HXAqzT9PF65KeMBGpjveVuV1GsR1zoiL1eMiXbonk",
+    "side": "SELL",
+    "sol": 0.031950272,
+    "tokenQty": 137426.238494
+  },
+  {
+    "sig": "4dkDvk8PJTmXsPnmHF8eQJwThLiwarbPcKcqRkkto3nw1K7NFaVXqEUX9EnsM316FaeJwntukobix2oB7KCaCSQf",
+    "ts": 1751991174,
+    "date": "2025-07-08T16:12:54.000Z",
+    "mint": "714HXAqzT9PF65KeMBGpjveVuV1GsR1zoiL1eMiXbonk",
+    "side": "BUY",
+    "sol": 0.035,
+    "tokenQty": 137426.238494
+  },
+  {
+    "sig": "2mRFmzikLYLJJ2nWjhHVvXHnfSCxamYRyJqKpnFsnyBbNEpu6AXp5Tc5HftnyQozbW9ZT3aB33uZxovmsb5wkCFq",
+    "ts": 1751989346,
+    "date": "2025-07-08T15:42:26.000Z",
+    "mint": "CR9XjFhGxtmn2t9LT6nN9AwHG7cHmHYnFJftqTFDen2Y",
+    "side": "SELL",
+    "sol": 0.047459314,
+    "tokenQty": 548470.1571
+  },
+  {
+    "sig": "2EK49UV8HV65foe2XSmdbCbBmoeC48orZdDzYESKb2fLK1fz3XTFpZoYKUGeSb78WFXtQe3XNYypTcDqmDggL63Y",
+    "ts": 1751989295,
+    "date": "2025-07-08T15:41:35.000Z",
+    "mint": "CR9XjFhGxtmn2t9LT6nN9AwHG7cHmHYnFJftqTFDen2Y",
+    "side": "BUY",
+    "sol": 0.05,
+    "tokenQty": 548470.1571
+  },
+  {
+    "sig": "4gLpwJi6Qgor3ihs1AXuFpAu9yNyPYYh6Kb6YJ88mpCjFv2RoBeDtgfukwSLahMpWzHHUMLQZ1FJHq5aZjkgPVSq",
+    "ts": 1751985731,
+    "date": "2025-07-08T14:42:11.000Z",
+    "mint": "AC6VdPDmvGama7pMUznbefq3RHmL66yNvrkVjUWgbonk",
+    "side": "BUY",
+    "sol": 0.05,
+    "tokenQty": 150588.644474
+  },
+  {
+    "sig": "2dJbjFV9FmUDqiV95MiiKZdQo4XQaq79eHWwVJer7fNYxCw2FwcGXamd7PKEgW9XU6grTnU1QKpWDria6ShfWRmE",
+    "ts": 1751985660,
+    "date": "2025-07-08T14:41:00.000Z",
+    "mint": "3ik8NmrsxxotTem6RdEqEn9T5qeAWH3EJjuXEc13bonk",
+    "side": "SELL",
+    "sol": 0.052695862,
+    "tokenQty": 380975.777766
+  },
+  {
+    "sig": "2KTaNxyStyeMuDbNZmQHPiZvor19g5N7hCZobVt5ncdBoJcKFGwzpZhz4NbKkUrEeAhbV7YVp39syQCX7i849a6y",
+    "ts": 1751985007,
+    "date": "2025-07-08T14:30:07.000Z",
+    "mint": "3ik8NmrsxxotTem6RdEqEn9T5qeAWH3EJjuXEc13bonk",
+    "side": "BUY",
+    "sol": 0.06,
+    "tokenQty": 380975.777766
+  },
+  {
+    "sig": "RK8jN88oHBMNRiBpTJB1nFKCwRURTkozBK2Tib3tgVxj5rZES156cheHNf5BUkKEiCByGfYtPPRFY3h26FRCafQ",
+    "ts": 1751971689,
+    "date": "2025-07-08T10:48:09.000Z",
+    "mint": "FZeKNyhyurM56hn4QzCkuYetRSENB11xaGxVHvkYbonk",
+    "side": "SELL",
+    "sol": 0.070103579,
+    "tokenQty": 346870.88877
+  },
+  {
+    "sig": "94sMjuKrLEkk6mZB8pVKDTK4uzE1GrV19R9Fr7HqnJ8842fBEFrRYhaXUKytsKPkpUAwHdAbddDfiVsNge6MWvi",
+    "ts": 1751970257,
+    "date": "2025-07-08T10:24:17.000Z",
+    "mint": "FZeKNyhyurM56hn4QzCkuYetRSENB11xaGxVHvkYbonk",
+    "side": "BUY",
+    "sol": 0.07,
+    "tokenQty": 346870.88877
+  },
+  {
+    "sig": "2wwyvTwpBoasy4EsrX4fGiNhFnm1nrjRDrQaZ1Nw2ritwAAbgSobMDophgZZX3oDsVfHvzyC6Jq3RFV5eF17JD2F",
+    "ts": 1751932215,
+    "date": "2025-07-07T23:50:15.000Z",
+    "mint": "C4kyeoTBQ82soBuCcgwam8KWf1NepqughFfP68qXbonk",
+    "side": "BUY",
+    "sol": 0.02,
+    "tokenQty": 120850.908042
+  },
+  {
+    "sig": "5u9jDyitHhW4Mwts7s6KRZQq1xgYPSxaDc9s9P4hUzQDMc2g4AG78xff8j7TEJLNg6WomHSrCcdgWaCEWsmSAKmL",
+    "ts": 1751890345,
+    "date": "2025-07-07T12:12:25.000Z",
+    "mint": "5dAGqRqYrtvdTAK9UE95rjwgf7ztLSuZpDL5Cs6sbonk",
+    "side": "BUY",
+    "sol": 0.009402093,
+    "tokenQty": 39475.679384
+  },
+  {
+    "sig": "5YbCD5X9KYinmT4RU68vGgqmg4tfa3mEpJb22RrqaBmciLnhXucGwKs6Awz4LgoqD3VKTuJ3tnT5KVncp6kzVTkB",
+    "ts": 1751889810,
+    "date": "2025-07-07T12:03:30.000Z",
+    "mint": "5dAGqRqYrtvdTAK9UE95rjwgf7ztLSuZpDL5Cs6sbonk",
+    "side": "SELL",
+    "sol": 0.023676502,
+    "tokenQty": 138012.463138
+  },
+  {
+    "sig": "2sTnc7DdZ22b4V74eaz9dre1c9AG9oCrTZUGv4yY5yCHE19qzdDJy8ZWgM78TquyfLvvrZnKCnmLjG3XzsxCinFP",
+    "ts": 1751887893,
+    "date": "2025-07-07T11:31:33.000Z",
+    "mint": "5dAGqRqYrtvdTAK9UE95rjwgf7ztLSuZpDL5Cs6sbonk",
+    "side": "BUY",
+    "sol": 0.025,
+    "tokenQty": 138012.463138
+  },
+  {
+    "sig": "PeuRsM5wkibwEykwXaTbucmSmem9sxHWWvGwA74GttmAXQj7z4ju3bkNcv3wuRSWKfGWjHXA58Z7TUvgxzbe1rf",
+    "ts": 1751700037,
+    "date": "2025-07-05T07:20:37.000Z",
+    "mint": "553AGQjpXro5CLUZN8H1S5W3Lata76txMysJiaanpump",
+    "side": "SELL",
+    "sol": 0.016624219,
+    "tokenQty": 31887.383653
+  },
+  {
+    "sig": "2uBMHVhLQXwtFNesHwiwHCEESrHhCUL1qmsdmiCD5EJauDwtFskTdwd1ikyPBpFEqqWSLZKxbzFqf2WinpHnLPDh",
+    "ts": 1751699883,
+    "date": "2025-07-05T07:18:03.000Z",
+    "mint": "553AGQjpXro5CLUZN8H1S5W3Lata76txMysJiaanpump",
+    "side": "BUY",
+    "sol": 0.015048797999999999,
+    "tokenQty": 31887.383653
+  },
+  {
+    "sig": "4Tn5hfY1137w5hpJLc2t2zpUohDS4myf78hDuqn58sbLmeUGrNyk9ZERABVRpUkjSZMu6H2oPqYn8rwhRvknyUoc",
+    "ts": 1751454412,
+    "date": "2025-07-02T11:06:52.000Z",
+    "mint": "HDReat5WpynpX2T7dvwWjbvjVH9zNLvCSVQVdxQEpump",
+    "side": "SELL",
+    "sol": 0.117770361,
+    "tokenQty": 65511.835883
+  },
+  {
+    "sig": "38KD7RnwBVUPq99W7VRY1TYVYpBGaBGL3UvxssXKzeMNXP7imoTBhhzUgVBA8RFoK5Abv9DuGujLpX1RVhZpw4hj",
+    "ts": 1751450200,
+    "date": "2025-07-02T09:56:40.000Z",
+    "mint": "HDReat5WpynpX2T7dvwWjbvjVH9zNLvCSVQVdxQEpump",
+    "side": "BUY",
+    "sol": 0.09996627799999999,
+    "tokenQty": 65511.835883
+  },
+  {
+    "sig": "3jGVapxm62QvKv8QMuvzz69PhKVLxnyarMXyL7rRL6rkhUVWW5P2QgotjBTpFVG5Vg2KaK8N4b7FWFCmyhFcCkL4",
+    "ts": 1750067776,
+    "date": "2025-06-16T09:56:16.000Z",
+    "mint": "EhM4XrTRNztaamyGeorhCtziq9dmZcyojSG6DfhDpump",
+    "side": "BUY",
+    "sol": 0.0020125510000000004,
+    "tokenQty": 8726.95273
+  },
+  {
+    "sig": "6f34dmHixAYCviVFVH6WrDFFyeDqsv2MkAXisM1KyDzHw3EaVHf6rJk7wMXsiCLYZZBPvDiDMkFWnyvJorMSLRg",
+    "ts": 1750014055,
+    "date": "2025-06-15T19:00:55.000Z",
+    "mint": "5PxGR7AiJwCNsgj9ZjSXsjpVPZFwkweuyvU8PavJpump",
+    "side": "SELL",
+    "sol": 0.009523401,
+    "tokenQty": 67098.306125
+  },
+  {
+    "sig": "3cyRWjCcbxqeU3nNejTc56DncDFnJAMxqY4hB4QEqTQ2o5ooqbJcjTppXo4zuPvSLJ3BLhHinGoGZKWuPuaGAdmF",
+    "ts": 1750013517,
+    "date": "2025-06-15T18:51:57.000Z",
+    "mint": "5PxGR7AiJwCNsgj9ZjSXsjpVPZFwkweuyvU8PavJpump",
+    "side": "BUY",
+    "sol": 0.025081115,
+    "tokenQty": 67098.306125
+  },
+  {
+    "sig": "4kHBmKhFo3AJkrhUYY3N33Z91LkCYkT2TqxzokViiyWwCRg2LmfqtFWffi3CeX5DktvMyKFfGRW5AXJ21ZN93Rax",
+    "ts": 1750011035,
+    "date": "2025-06-15T18:10:35.000Z",
+    "mint": "HmjJLAXm4Q4cWEcFx7sjDtuGujLJeeRAm9MWLhuHpump",
+    "side": "SELL",
+    "sol": 0.027654751,
+    "tokenQty": 13672.022345
+  },
+  {
+    "sig": "2SC14LDoXzKHuzZimm1mSumktQnCdkKbW4KiUEuKK9iLdBJjKvfMHQoZkuAE859hzRpZ6KAnDaGmFmvZuvo8eoL5",
+    "ts": 1750008350,
+    "date": "2025-06-15T17:25:50.000Z",
+    "mint": "HmjJLAXm4Q4cWEcFx7sjDtuGujLJeeRAm9MWLhuHpump",
+    "side": "BUY",
+    "sol": 0.020047784,
+    "tokenQty": 13672.022345
+  },
+  {
+    "sig": "4DpHwvzQb61dFMqKh2sjWZTZX4xwwQG4Sksbf5iZoccrLLg69P9zCwr2JWkjueKCkb8HTZ9oNtFaTW4XxN2PZ5SG",
+    "ts": 1750007449,
+    "date": "2025-06-15T17:10:49.000Z",
+    "mint": "HmjJLAXm4Q4cWEcFx7sjDtuGujLJeeRAm9MWLhuHpump",
+    "side": "SELL",
+    "sol": 0.032138522,
+    "tokenQty": 31967.509961
+  },
+  {
+    "sig": "3N94YcsH321LdMzeDQv27s3x4sXYJS9B5dX7FPtv3e4xgaYC2gKLW4DEyWe64kTamHAZqCUN3JyeebX3eZP19cGq",
+    "ts": 1750006975,
+    "date": "2025-06-15T17:02:55.000Z",
+    "mint": "HmjJLAXm4Q4cWEcFx7sjDtuGujLJeeRAm9MWLhuHpump",
+    "side": "BUY",
+    "sol": 0.030107246,
+    "tokenQty": 31967.509961
+  },
+  {
+    "sig": "67RkjofXoKxyiCvUq7saHpZSCUJ56aRhWkaBai5aTwmvPaA7nfhHUPm8Z42xkRCxSDGLKzz3kZpF8K5f1sUJWtbn",
+    "ts": 1750006840,
+    "date": "2025-06-15T17:00:40.000Z",
+    "mint": "HmjJLAXm4Q4cWEcFx7sjDtuGujLJeeRAm9MWLhuHpump",
+    "side": "SELL",
+    "sol": 0.028162737,
+    "tokenQty": 47040.753581
+  },
+  {
+    "sig": "5WXGYNJinJVg2g6WsFnyVcVV5mgFT5Z3abnMRJPytYneWvdQJMjt9h6hDgrgfz2pCFLRDiZiHi8bxeazNEuWbFp7",
+    "ts": 1750006600,
+    "date": "2025-06-15T16:56:40.000Z",
+    "mint": "HmjJLAXm4Q4cWEcFx7sjDtuGujLJeeRAm9MWLhuHpump",
+    "side": "BUY",
+    "sol": 0.020060004,
+    "tokenQty": 47040.753581
+  },
+  {
+    "sig": "LULVNGoLhP52cZETCykzN5j87Am6VdMx9Pk1SwcNW88cN3c1114ba15hv5FRH64xkVPrSkib32vF4G5s5tfk7An",
+    "ts": 1750004552,
+    "date": "2025-06-15T16:22:32.000Z",
+    "mint": "qNH1ukRikpbZwnhRW28x4tnc2N7G961YqhEerCGpump",
+    "side": "SELL",
+    "sol": 0.029192655,
+    "tokenQty": 32838.314308
+  },
+  {
+    "sig": "pXyQGJ8XfW2nhtgn34fYPW1MZTfUfknFBNCTks9t8zjiqxeqQAJgaQE6ZxzH5gsMSD4d2CgamW2w8cwKKSK1fGE",
+    "ts": 1750004286,
+    "date": "2025-06-15T16:18:06.000Z",
+    "mint": "qNH1ukRikpbZwnhRW28x4tnc2N7G961YqhEerCGpump",
+    "side": "BUY",
+    "sol": 0.020060004,
+    "tokenQty": 32838.314308
+  },
+  {
+    "sig": "2k51EdeqpiVQMCWD3empLLgJiBS1DXkMP3HJ44tduqPK8s77AsJSPXTh6QAdbqr1GcuYvst4hchPSnr4DMqbXBSh",
+    "ts": 1749998911,
+    "date": "2025-06-15T14:48:31.000Z",
+    "mint": "J6Zh9N6AKkFySTpQD3wMbpoetPpwohvuq5YgVWKvpump",
+    "side": "SELL",
+    "sol": 0.071720273,
+    "tokenQty": 23586.401491
+  },
+  {
+    "sig": "67bWPb724KX9xzJ8tm7XxRMmKgzDTiWeahK1gSogrNaxyMgH4kGZZytiozMKnBGvCoTjnc7kD6cDrsyJpimf2zw3",
+    "ts": 1749998296,
+    "date": "2025-06-15T14:38:16.000Z",
+    "mint": "J6Zh9N6AKkFySTpQD3wMbpoetPpwohvuq5YgVWKvpump",
+    "side": "BUY",
+    "sol": 0.060180004,
+    "tokenQty": 23586.401491
+  },
+  {
+    "sig": "2hhWv7vQsW8eLJ1fesw8uEt1LhkSFRfvbWyANBvkCi2U13GZwrcsDziJHxZsdYY7zu4fRBdwfrWD3juVAhyvJnri",
+    "ts": 1749995574,
+    "date": "2025-06-15T13:52:54.000Z",
+    "mint": "MfNydWvme6LTUpbXC3WtbDwBJnrYiskA6Cq6hK3pump",
+    "side": "SELL",
+    "sol": 0.062474388,
+    "tokenQty": 162628.790718
+  },
+  {
+    "sig": "nuYjUVvkBR3fZSjQmgi7BCQM9zP4DnEkmu7tApvdHrJZf8vq6QmvprP1L6oHS3SMLW5AQU3aGv7ygXKtrmWSDBX",
+    "ts": 1749995339,
+    "date": "2025-06-15T13:48:59.000Z",
+    "mint": "MfNydWvme6LTUpbXC3WtbDwBJnrYiskA6Cq6hK3pump",
+    "side": "BUY",
+    "sol": 0.060198737999999995,
+    "tokenQty": 162628.790718
+  },
+  {
+    "sig": "2HXHAAuVHkfcuUzFi9zB6SMutxmsxPakyVhXC4ZTCY8UD4f7gs8sjwY1aacWFVf8GpBQnxrrQS2YsSJm6f9jcm4M",
+    "ts": 1749995290,
+    "date": "2025-06-15T13:48:10.000Z",
+    "mint": "FFButxhra5PbGajLN3e1LhVWtTp2BtUoWoJJGSVBpump",
+    "side": "SELL",
+    "sol": 0.063811361,
+    "tokenQty": 17599.195656
+  },
+  {
+    "sig": "3tAsDct584BzP3E8iajPTYeDyG9VCADACJags7yjLxfwHEDNXVyzf54XH6UrmdYesRNTYtro4cXCpMwDrmZPHHiT",
+    "ts": 1749994383,
+    "date": "2025-06-15T13:33:03.000Z",
+    "mint": "FFButxhra5PbGajLN3e1LhVWtTp2BtUoWoJJGSVBpump",
+    "side": "BUY",
+    "sol": 0.060180004,
+    "tokenQty": 17599.195656
+  },
+  {
+    "sig": "f9RAHo9VyXiwV2c73XAcFh6wSpY7eKZgpjqpYaRFZfNy8x3jAjwY3tSv44NRrPytUM7hsdG8vmbzosU2dNLGz4n",
+    "ts": 1749985596,
+    "date": "2025-06-15T11:06:36.000Z",
+    "mint": "J6Zh9N6AKkFySTpQD3wMbpoetPpwohvuq5YgVWKvpump",
+    "side": "SELL",
+    "sol": 0.063347838,
+    "tokenQty": 36880.615224
+  },
+  {
+    "sig": "5MULTnf7htRqu5Ei72YibnnMWfE6mJjRSCQDNX7YaJ71JVvkwWDM4gnsU8Lk4KHWJYNLz75w4SM9s3BiyZTUdMfG",
+    "ts": 1749984826,
+    "date": "2025-06-15T10:53:46.000Z",
+    "mint": "J6Zh9N6AKkFySTpQD3wMbpoetPpwohvuq5YgVWKvpump",
+    "side": "BUY",
+    "sol": 0.03978986500000001,
+    "tokenQty": 36880.615224
+  },
+  {
+    "sig": "327EwYb9MwsFvSTBCQSTkoZ8u6nXjWyuEVtjbU4QQMudsn9rXsJEXgSirSzLZtjENZg4JHR3UJM9pQQbbP5Kf7rC",
+    "ts": 1749984779,
+    "date": "2025-06-15T10:52:59.000Z",
+    "mint": "6H27Q6GSHAmWy196HMUmxyS8EYnkRuSxwzrj4bQJpump",
+    "side": "SELL",
+    "sol": 0.055614242,
+    "tokenQty": 74340.915082
+  },
+  {
+    "sig": "eY3uWzFXBxWat2pr6cDfZvNBvBXVJjQq4oXt1f82LpnQEiweaxGjEMWo9jtxThvS5QdVF3ULihkGXT84TjjY3P6",
+    "ts": 1749984399,
+    "date": "2025-06-15T10:46:39.000Z",
+    "mint": "6H27Q6GSHAmWy196HMUmxyS8EYnkRuSxwzrj4bQJpump",
+    "side": "BUY",
+    "sol": 0.05,
+    "tokenQty": 74340.915082
+  },
+  {
+    "sig": "37ymW2BhKgURQpQmEx8oU1RdXKFXhrrqb9BpxW1kik4oa8Hr1CfJ9X26odgzRxAmZ3hHFfDg21WdVqFadrpYDkoY",
+    "ts": 1749983756,
+    "date": "2025-06-15T10:35:56.000Z",
+    "mint": "J6Zh9N6AKkFySTpQD3wMbpoetPpwohvuq5YgVWKvpump",
+    "side": "SELL",
+    "sol": 0.053379074,
+    "tokenQty": 107809.036931
+  },
+  {
+    "sig": "5fEpgtEFoLjcpv4o9exAzSsB3YeCgV5YZE6EhZnp2DHQEwHoau51VwPaaPxoHUbeGWL5RNgFTFkk4LsN4ARvYJfT",
+    "ts": 1749983372,
+    "date": "2025-06-15T10:29:32.000Z",
+    "mint": "J6Zh9N6AKkFySTpQD3wMbpoetPpwohvuq5YgVWKvpump",
+    "side": "BUY",
+    "sol": 0.05015000399999999,
+    "tokenQty": 107809.036931
+  },
+  {
+    "sig": "4ThApCBMCnaXsRjBkUjr4eKaeQ7P6iGTgNs9Du1MeaSTZ5ythth4sSCuy4RX91Zr7BQdFWBPfS4bmMZHurFgmsWR",
+    "ts": 1749982346,
+    "date": "2025-06-15T10:12:26.000Z",
+    "mint": "5d82791nEub4A6WJR4t5rtDUrM1CrWdcw4kea4U9pump",
+    "side": "SELL",
+    "sol": 0.053605838,
+    "tokenQty": 86243.800016
+  },
+  {
+    "sig": "P2bLfL2ACLLWULXwNUE6fMj6Sq9ZaVedx5UnVBKeBP33BmUkzLSFqxCnjtVzHCXwsqW3tmeWa2G7uBBw1DbQy5D",
+    "ts": 1749981392,
+    "date": "2025-06-15T09:56:32.000Z",
+    "mint": "5d82791nEub4A6WJR4t5rtDUrM1CrWdcw4kea4U9pump",
+    "side": "BUY",
+    "sol": 0.059823853999999996,
+    "tokenQty": 86243.800016
+  },
+  {
+    "sig": "5xxXcFYzzeBC9mm8xgtvi23jkkJEyehYWAa6RPV6fexnbJsB5QAnyqk5VExn9NKhGZhEcamuRsQVsLzBHEBkpKTJ",
+    "ts": 1749926765,
+    "date": "2025-06-14T18:46:05.000Z",
+    "mint": "3eKQT9xueHxgUnSHpgVXP26Jrf6LZ2JK95RkEz58pump",
+    "side": "BUY",
+    "sol": 0.004012004,
+    "tokenQty": 18848.151051
+  },
+  {
+    "sig": "29NPhj9cGkkx7G4JzAtD6Fnm7KL4FHMnah2W3Y6BgCuP32f7Y8omna7dCfx8QPSxNbSYsM2BdbwQCtqmAuG1DWd8",
+    "ts": 1749915352,
+    "date": "2025-06-14T15:35:52.000Z",
+    "mint": "F8HeMpRDkfgn3GgDjnuH9VH9JSe3xvEq5s1ituzypump",
+    "side": "BUY",
+    "sol": 0.005015004000000001,
+    "tokenQty": 8875.425337
+  },
+  {
+    "sig": "3iJwMtuUmfKQdKFiyUkcuoP8NNSyRao8rMPDokFLZH9k8QKMmXrB8dYQCgzVecUxu1aZEEjfBML85Lc8Dx4Zk69s",
+    "ts": 1749915321,
+    "date": "2025-06-14T15:35:21.000Z",
+    "mint": "Zao13pE3B6ybmR448SVmSm2AN3ZTzw2GAEmQLkXpump",
+    "side": "SELL",
+    "sol": 0.010008748,
+    "tokenQty": 37012.471929
+  },
+  {
+    "sig": "4T6uQuH25qRRJrt8pg3M3o5H1YCiub15QAquWKUzBDg2jYGmXzzeQ3FYhfgaE4jgiseh2qYbfJa4qgbFngxyRH4t",
+    "ts": 1749839502,
+    "date": "2025-06-13T18:31:42.000Z",
+    "mint": "EFngf156xno26VQV5RqCDKmJ5q2em7sV7M4rCWqLpump",
+    "side": "BUY",
+    "sol": 0.008024004,
+    "tokenQty": 24280.851694
+  },
+  {
+    "sig": "2YKvJLpGkZvPTKUr3F1GDkPnKWASBTZvxjLNT8LqNmbUnEy7aB4oVZF943DqhkhArgmpZq4s44XEx6gqL7EQrSL1",
+    "ts": 1749824654,
+    "date": "2025-06-13T14:24:14.000Z",
+    "mint": "B4T6EmiKTCbLY7Kz3Y9zxPnYkutadJBvkC4qFcxdpump",
+    "side": "BUY",
+    "sol": 0.020055589000000002,
+    "tokenQty": 5512.651471
+  },
+  {
+    "sig": "2VC4MQVSKJLCamKuy8hm1GzRAhYdL3PE7o8LBDoQb8DZFVktEAfwYNPqijyqmD4NSQi2WpibQ3ykNeeVF4DrWzKK",
+    "ts": 1749824008,
+    "date": "2025-06-13T14:13:28.000Z",
+    "mint": "GACuDtvf7EboY8SMiNyGorpWPc6tvXhKT4FGbQ6PpjF",
+    "side": "SELL",
+    "sol": 0.053779557,
+    "tokenQty": 121426.730394
+  },
+  {
+    "sig": "5Hc2Mk9ZL6WWEBuTZhJ4BFCBpFQgX15SFpsSwf67B7LWFWmWz3YTod6iZXCs2uT9NWgbduNkpSobCZf7MtQxhYps",
+    "ts": 1749811335,
+    "date": "2025-06-13T10:42:15.000Z",
+    "mint": "GACuDtvf7EboY8SMiNyGorpWPc6tvXhKT4FGbQ6PpjF",
+    "side": "BUY",
+    "sol": 0.07,
+    "tokenQty": 121426.730394
+  },
+  {
+    "sig": "42NsKK1TP6zJ8ytS1f869szmvzPxFgZxyoKooxb3yQww9XvJjt3ekwivM8cp2HXzsyMWELBsohL5s8tdycK9tgA9",
+    "ts": 1749807811,
+    "date": "2025-06-13T09:43:31.000Z",
+    "mint": "B4T6EmiKTCbLY7Kz3Y9zxPnYkutadJBvkC4qFcxdpump",
+    "side": "SELL",
+    "sol": 0.074171718,
+    "tokenQty": 48230.252208
+  },
+  {
+    "sig": "2MA2j26hC5UPEKQHDv1FX8Pth7C7mgxWYhLQ9jBKGvzjefYwTyAjWBSohCPzXErbuZ4A51gQHLBhYd4GwMooDsaA",
+    "ts": 1749799515,
+    "date": "2025-06-13T07:25:15.000Z",
+    "mint": "B4T6EmiKTCbLY7Kz3Y9zxPnYkutadJBvkC4qFcxdpump",
+    "side": "BUY",
+    "sol": 0.039999679,
+    "tokenQty": 48230.252208
+  },
+  {
+    "sig": "2HNSZUcmAeSecwNhiZi38kaLPy6QrpeoMeCkvL4BsKC2yDCnTYPRiPDPPyV2DrWsyib5GkvQSFaQxXeca757PfFx",
+    "ts": 1749797228,
+    "date": "2025-06-13T06:47:08.000Z",
+    "mint": "7u6WirUYbf3kJdZQoPTCYjgU5rpVg21LuXLKmmCUpump",
+    "side": "SELL",
+    "sol": 0.110313565,
+    "tokenQty": 13242.883083
+  },
+  {
+    "sig": "5opNSmno8Q3bXzEecVZCUYCAuN4xGY6LCHvnGACmwuuTY8PmQZ4FcTvbUenDPieza5iEUivvXpXWBdJaam4x4Ax7",
+    "ts": 1749792909,
+    "date": "2025-06-13T05:35:09.000Z",
+    "mint": "CLWPfxez2L9ED3bFoibKkqaRWzpePPNfhP5LUUEbpump",
+    "side": "BUY",
+    "sol": 0.030090004,
+    "tokenQty": 24940.882087
+  },
+  {
+    "sig": "UkeZaDyTmY2vdr8HKHNHqmaFeiKgXCiZwLLMy8SnPLGVUTUCVeKjUGJ3Xq1kgqJFTjQXU7NpZVwo1GPbDpo4APB",
+    "ts": 1749769200,
+    "date": "2025-06-12T23:00:00.000Z",
+    "mint": "7u6WirUYbf3kJdZQoPTCYjgU5rpVg21LuXLKmmCUpump",
+    "side": "BUY",
+    "sol": 0.5,
+    "tokenQty": 12336.191465
+  },
+  {
+    "sig": "3DKwGrwyb9h8kkznxfCe91YvHwmmp5tZp2ED2dQ5CsPyinBEPCwrj92aX3EhTQajGSpdKpxPsrCVBrMM9vUFYE6y",
+    "ts": 1749768934,
+    "date": "2025-06-12T22:55:34.000Z",
+    "mint": "7u6WirUYbf3kJdZQoPTCYjgU5rpVg21LuXLKmmCUpump",
+    "side": "BUY",
+    "sol": 0.03,
+    "tokenQty": 906.691618
+  },
+  {
+    "sig": "3NJxH2vuq2hnCj2rt9NyHdPhcRFZnBmaMppxBJXSANbcwxBnqwrXoYLCGXQAPT3rXcHDrwJKJWk4ttCUAfpYFFCL",
+    "ts": 1749768698,
+    "date": "2025-06-12T22:51:38.000Z",
+    "mint": "7u6WirUYbf3kJdZQoPTCYjgU5rpVg21LuXLKmmCUpump",
+    "side": "SELL",
+    "sol": 0.136771923,
+    "tokenQty": 6603.357116
+  },
+  {
+    "sig": "21dH3fLiJ1tLJhG2AvTyJtoUtpTQFF4pur8Tnmm9C3raA6EMrnhumRZVeYoUdSKsipuUjJgi5mYzSDBuj6m2a3fj",
+    "ts": 1749768037,
+    "date": "2025-06-12T22:40:37.000Z",
+    "mint": "Zao13pE3B6ybmR448SVmSm2AN3ZTzw2GAEmQLkXpump",
+    "side": "BUY",
+    "sol": 0.030090004,
+    "tokenQty": 37012.471929
+  },
+  {
+    "sig": "qns8C6zjw9sTa1nak4JANaRibPUj5zozQ583LaADDLvSgJLWBnWBPbQTLHV7cQWmeYxT28ALRY4ivw17Hmezs6n",
+    "ts": 1749765038,
+    "date": "2025-06-12T21:50:38.000Z",
+    "mint": "7u6WirUYbf3kJdZQoPTCYjgU5rpVg21LuXLKmmCUpump",
+    "side": "BUY",
+    "sol": 0.05,
+    "tokenQty": 5499.277652
+  },
+  {
+    "sig": "2eUDUqixxUDAY1EJPcU5STkmoCrqvGKxWNpmdBhd3NZVgFqTfrjjDDpdTK3rPE4gYLaatuLfnvkM2UrBw6u53XLu",
+    "ts": 1749765008,
+    "date": "2025-06-12T21:50:08.000Z",
+    "mint": "7u6WirUYbf3kJdZQoPTCYjgU5rpVg21LuXLKmmCUpump",
+    "side": "BUY",
+    "sol": 0.01,
+    "tokenQty": 1104.079464
+  },
+  {
+    "sig": "zhYoLGodstm1nBVEUsAVtpN9BK1c6hEvxxXgLWVWEJoJsSey7oFqt5Cdhdz4xBWtSUvBomABAqGwtJGHVHJBmKh",
+    "ts": 1749755027,
+    "date": "2025-06-12T19:03:47.000Z",
+    "mint": "5miFyenAa2wZj6xmu1i6qdMD8Aa9F4Bv94BdojDbpump",
+    "side": "SELL",
+    "sol": 0.009440807,
+    "tokenQty": 7323.802869
+  },
+  {
+    "sig": "2TCU5kbEwh6MZceZRue7BP8KrXbuY77CknaYj9jtGekpvaudxxiGefCNtz3ZTUt4av539qy22V5HVGsLiZmyjva9",
+    "ts": 1749750673,
+    "date": "2025-06-12T17:51:13.000Z",
+    "mint": "5miFyenAa2wZj6xmu1i6qdMD8Aa9F4Bv94BdojDbpump",
+    "side": "BUY",
+    "sol": 0.030090004,
+    "tokenQty": 7323.802869
+  },
+  {
+    "sig": "2haLJESj8NfU2nJre4sPj5Lr6tvwvDCbYEQRwiCTpgcVwLFAShzix69YxHMLzg6qcLnyFHNUuLiXvqi6JbeE78hN",
+    "ts": 1749747838,
+    "date": "2025-06-12T17:03:58.000Z",
+    "mint": "BbbwE8rudhjK4husSRc37X54mYyDBRcykJ7fk5oHpump",
+    "side": "SELL",
+    "sol": 0.004030713,
+    "tokenQty": 3181.905186
+  },
+  {
+    "sig": "c2uygNbiVtJhxFtiUk6sFSsdxqAYcFff1rG2AcWL5MktNvscuuhtHDA5QHEsFLynJjmfDaL4iidcrrCbK3Yh5Vw",
+    "ts": 1749747787,
+    "date": "2025-06-12T17:03:07.000Z",
+    "mint": "5miFyenAa2wZj6xmu1i6qdMD8Aa9F4Bv94BdojDbpump",
+    "side": "SELL",
+    "sol": 0.012864256,
+    "tokenQty": 3597.130674
+  },
+  {
+    "sig": "277FKxjZ5k6E3Mp7WDsNXimFBw2LmoTQqMbtfKPQVj5tjagAWVocV5WdJyQyToY45AYpSFL4XS8tXe38BreuCEpr",
+    "ts": 1749744924,
+    "date": "2025-06-12T16:15:24.000Z",
+    "mint": "5miFyenAa2wZj6xmu1i6qdMD8Aa9F4Bv94BdojDbpump",
+    "side": "SELL",
+    "sol": 0.016848258,
+    "tokenQty": 3597.130673
+  },
+  {
+    "sig": "2FrwofpjwnXiFkgEvpC8nXE61TpS9652VSh8sFVFsNak3o4QNWdamoYB5u1Wows8d4YimuKsZCkthAjZ1MHBf5uf",
+    "ts": 1749742709,
+    "date": "2025-06-12T15:38:29.000Z",
+    "mint": "5miFyenAa2wZj6xmu1i6qdMD8Aa9F4Bv94BdojDbpump",
+    "side": "BUY",
+    "sol": 0.020060004,
+    "tokenQty": 7194.261347
+  },
+  {
+    "sig": "27GNDwJ2JyR6HRxVCFSQsTVspWLAafdUuj74totTDDsbuxaoqEzarWLq2TRMtjM2rfrq1QZGXHFDKehPtSe2fzrD",
+    "ts": 1749742571,
+    "date": "2025-06-12T15:36:11.000Z",
+    "mint": "BbbwE8rudhjK4husSRc37X54mYyDBRcykJ7fk5oHpump",
+    "side": "BUY",
+    "sol": 0.005015004000000001,
+    "tokenQty": 3181.905186
+  },
+  {
+    "sig": "3z7LQ3RaB2BZBgj276zRADTnLTzDmuDMMvTEerM2g8u9NyQXadSBPMzyr1iRNUuXD8PYp1KbJiqCXRqE7QCVPTRd",
+    "ts": 1749742521,
+    "date": "2025-06-12T15:35:21.000Z",
+    "mint": "JBahfY5TSFaBooJ5N186Zd9JNvVgm9iHRJSUFT5KqNxA",
+    "side": "SELL",
+    "sol": 0.003274396,
+    "tokenQty": 792.38942
+  },
+  {
+    "sig": "4MBT5FFWmHSQLoHJPXinj3btzaf1KF8m2R9mxcPJhVV82stNLju4HwBdbRhF1YjGm6rcnJBMJZJ8ef77yCwwt6RE",
+    "ts": 1749742458,
+    "date": "2025-06-12T15:34:18.000Z",
+    "mint": "JBahfY5TSFaBooJ5N186Zd9JNvVgm9iHRJSUFT5KqNxA",
+    "side": "SELL",
+    "sol": 0.003508987,
+    "tokenQty": 792.389419
+  },
+  {
+    "sig": "2ZBeFSTaYR5YMG5KsCJMiWqF6UmS4NGhEYwM6YV7MbEqcyv2TK3YsfkQTPFePj8bHVLTc1vs8W5eD4K3a9YYC2Fu",
+    "ts": 1749738189,
+    "date": "2025-06-12T14:23:09.000Z",
+    "mint": "JBahfY5TSFaBooJ5N186Zd9JNvVgm9iHRJSUFT5KqNxA",
+    "side": "BUY",
+    "sol": 0.012046547999999999,
+    "tokenQty": 1584.778839
+  },
+  {
+    "sig": "2pM9J8ZHt1ZQJ5UH2Ayn2iT9LnJLatQdTViHbYcybK1zPuYy1jsR9GY8sfFeoJQBrMJza1rzLNQP9BAhbVd81rvm",
+    "ts": 1748792426,
+    "date": "2025-06-01T15:40:26.000Z",
+    "mint": "4ggGxE9V9G8sEvA2RdG3YLnDUot5NRYQYNhkPP9upump",
+    "side": "BUY",
+    "sol": 0.019800001000000005,
+    "tokenQty": 61319.381396
+  },
+  {
+    "sig": "2925xwKBJof9GrMakQQXcrzSs58oNSK8QTBWaqySo3yHNrt8WV6PpaLC95W8MZtg81QrDUL6NBMXMVto69Pe91hm",
+    "ts": 1748789922,
+    "date": "2025-06-01T14:58:42.000Z",
+    "mint": "4ggGxE9V9G8sEvA2RdG3YLnDUot5NRYQYNhkPP9upump",
+    "side": "SELL",
+    "sol": 0.01105151,
+    "tokenQty": 102305.246503
+  },
+  {
+    "sig": "4Q1ZWsVjsL9ZXnfodZ9reY6r7wyHpvLtkaynqaP46aAWNz4SjHASDEGQgDgMnXyd2PbGsD1gY4JPCAPey4ofDmYL",
+    "ts": 1748789853,
+    "date": "2025-06-01T14:57:33.000Z",
+    "mint": "4ggGxE9V9G8sEvA2RdG3YLnDUot5NRYQYNhkPP9upump",
+    "side": "BUY",
+    "sol": 0.019800001000000005,
+    "tokenQty": 102305.246503
+  },
+  {
+    "sig": "2QQ1Xt2rahHJ93nZ3SNStda6bTH2E7yonG7NdCbUDz5uNm2NFXa6MQSH4pDmqxLbFVpnQt8XNU8E6DxN1RXcN8Hv",
+    "ts": 1748789721,
+    "date": "2025-06-01T14:55:21.000Z",
+    "mint": "4ggGxE9V9G8sEvA2RdG3YLnDUot5NRYQYNhkPP9upump",
+    "side": "SELL",
+    "sol": 0.010436916,
+    "tokenQty": 40567.164264
+  },
+  {
+    "sig": "49p9PoCEvLJV6SzK2g5h3HPAgNDpYtHed8yvGyziPY6NuCsFG2zGpERkXm7YFSJCsJDZWSLfvADniYhziGSornrm",
+    "ts": 1748789373,
+    "date": "2025-06-01T14:49:33.000Z",
+    "mint": "4ggGxE9V9G8sEvA2RdG3YLnDUot5NRYQYNhkPP9upump",
+    "side": "SELL",
+    "sol": 0.024711954,
+    "tokenQty": 40567.164264
+  },
+  {
+    "sig": "3tps9G2rUJE4B6LiYEQ27whZpH8vDStLMgJJ21gsfPgq5qm1DpAUXBQPVxEt7FzgePp2NQNfF3CYrsDizKDndEAv",
+    "ts": 1748774634,
+    "date": "2025-06-01T10:43:54.000Z",
+    "mint": "7Vmonrq2rbFvERz74EPuvLZ5i4Gh6sDBXWazZi46pump",
+    "side": "SELL",
+    "sol": 0.009251923,
+    "tokenQty": 29617.822081
+  },
+  {
+    "sig": "3bgaTwJsf37Doxy9u7hLWon9vKrcMEV6GdKm9eULkVSUSqTdRxpM4ba8sTbCyPpxbNdoH2vdtXGpdAqdf64xdmjX",
+    "ts": 1748770011,
+    "date": "2025-06-01T09:26:51.000Z",
+    "mint": "7Vmonrq2rbFvERz74EPuvLZ5i4Gh6sDBXWazZi46pump",
+    "side": "BUY",
+    "sol": 0.019800001000000005,
+    "tokenQty": 29617.822081
+  },
+  {
+    "sig": "28xKd5z2jZxNM4RAEtzhp3H2cqeU97r8eEEVqzr7FJj8WTbMt2kUMv6eJbPtNWak6YzWHAqgF1V2nNYeKmxW7rP2",
+    "ts": 1748615627,
+    "date": "2025-05-30T14:33:47.000Z",
+    "mint": "UnpRNLVTXNxmCedrmdCRALEY96QUrCBMKUSrY56pump",
+    "side": "SELL",
+    "sol": 0.004487605,
+    "tokenQty": 2136.232026
+  },
+  {
+    "sig": "2uoTk22anTbnugFXngUXaYK7maYddnWU9Hi8yHhK1inWcCya69PXqdY3db88XCnjE7HryMbgTSqtgdobdD1ULZXS",
+    "ts": 1748615546,
+    "date": "2025-05-30T14:32:26.000Z",
+    "mint": "UnpRNLVTXNxmCedrmdCRALEY96QUrCBMKUSrY56pump",
+    "side": "SELL",
+    "sol": 0.004413058,
+    "tokenQty": 2136.232025
+  },
+  {
+    "sig": "zfw6k1ASWHaUznjEph8NiHZbkejiNLdMK5Qw6aaH8fmP6CqhNSEsni6Zg4d22xbeAVxZng8ndqNpm3rSbGoWjdk",
+    "ts": 1748611238,
+    "date": "2025-05-30T13:20:38.000Z",
+    "mint": "UnpRNLVTXNxmCedrmdCRALEY96QUrCBMKUSrY56pump",
+    "side": "SELL",
+    "sol": 0.009189683,
+    "tokenQty": 4272.464049
+  },
+  {
+    "sig": "59niNKCyCQosBZgqJ5xzEgo7F4HxtgSiz9v44J5jR39tS4qviFeApWw4ecsGa4SwWaUbaJ7RSbeqG72q6ufKUncu",
+    "ts": 1748605028,
+    "date": "2025-05-30T11:37:08.000Z",
+    "mint": "UnpRNLVTXNxmCedrmdCRALEY96QUrCBMKUSrY56pump",
+    "side": "BUY",
+    "sol": 0.010029999999999999,
+    "tokenQty": 8544.9281
+  },
+  {
+    "sig": "enuvqo3TfZgAeE5HyrT649SxnuJgeBHQcahhkHTx6Y6F1CQgkxeqpFATWbUqN5d5USiZatJHyNFwMdruBoeTRcP",
+    "ts": 1748566622,
+    "date": "2025-05-30T00:57:02.000Z",
+    "mint": "Dccf3rZoDpGRC6UBeXgzQZRKxQNWQ42GDC1vCADepump",
+    "side": "SELL",
+    "sol": 0.003744357,
+    "tokenQty": 4121.902534
+  },
+  {
+    "sig": "ZRVtKaiFNqWKczozydMRy2Erc7btop88zEz8iaehfmoYMFFzVqLW1i1kyqBw1oAyX9sd3CBoZ2DLR6GJq8VAyhJ",
+    "ts": 1748566302,
+    "date": "2025-05-30T00:51:42.000Z",
+    "mint": "5Wdk6QUrtARoQSZgWZuWLPLxPwMyA27Vaihi9eWHjGc2",
+    "side": "SELL",
+    "sol": 0.009330468,
+    "tokenQty": 42577.650628
+  },
+  {
+    "sig": "2hFzqPHLXcNe83Ey8qB9FSGL538C5US5Bi7PvD1qMTpcSgwW76byC6xm9AcCVUMfqEdohVbG5JrhcAn2PYhkSTY3",
+    "ts": 1748565562,
+    "date": "2025-05-30T00:39:22.000Z",
+    "mint": "Dccf3rZoDpGRC6UBeXgzQZRKxQNWQ42GDC1vCADepump",
+    "side": "BUY",
+    "sol": 0.005005098,
+    "tokenQty": 4121.902534
+  },
+  {
+    "sig": "2xjpxxVyYsWTFGToAwnVeng64WcMfqsHymaUsLPD3xVDmBrWRWinqycrfjgz638xVyqnrjbLUdgmup6azZ9xnZoV",
+    "ts": 1748563285,
+    "date": "2025-05-30T00:01:25.000Z",
+    "mint": "5Wdk6QUrtARoQSZgWZuWLPLxPwMyA27Vaihi9eWHjGc2",
+    "side": "BUY",
+    "sol": 0.010029999999999999,
+    "tokenQty": 42577.650628
+  },
+  {
+    "sig": "34KeJzNPswVnvhcxdPjd4up46C1k3LqiLXKbfTTA9zLJ88iXrhXdCwh61jLGX6DCtGj5mcFTbmNss228qCxWaNXr",
+    "ts": 1741000927,
+    "date": "2025-03-03T11:22:07.000Z",
+    "mint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+    "side": "SELL",
+    "sol": 0.092604977,
+    "tokenQty": 15
+  },
+  {
+    "sig": "H5ZU4DwoCVG93GAbZZniFj8WkrFsQoVJZPpQmpm2Au6WJc52VFnVgrCrnbc8Pe57rt8PvRm5EdQyjyeZrtgHsqH",
+    "ts": 1727685134,
+    "date": "2024-09-30T08:32:14.000Z",
+    "mint": "8p2HuMsiiDA82gACB1bwA45QSURpU8JxzdFbTwXkpump",
+    "side": "BUY",
+    "sol": 0.005,
+    "tokenQty": 5265.768543
+  },
+  {
+    "sig": "3MbUDttgc1uzLPFGj2Cam3qRwb8oX6JddTazWKAvSrjUFLRzmsa2p7sKd2nZ7utmk26KmxNPU2iM4jyAdJAe5P5q",
+    "ts": 1727617315,
+    "date": "2024-09-29T13:41:55.000Z",
+    "mint": "r4QvQGZbKHc4bLxGP6SueRyYDzuvMVdTqXeuWSipump",
+    "side": "SELL",
+    "sol": 0.003799906,
+    "tokenQty": 1016.926644
+  },
+  {
+    "sig": "49EWaVKMGwuQdgTSd36fqFimymAx536g9BMJNg7QEH9U1vn6bksPZoXkSzKgWQNr8uTJ9cYphWBFSaVYWN7iXmh8",
+    "ts": 1727615353,
+    "date": "2024-09-29T13:09:13.000Z",
+    "mint": "r4QvQGZbKHc4bLxGP6SueRyYDzuvMVdTqXeuWSipump",
+    "side": "BUY",
+    "sol": 0.005,
+    "tokenQty": 1016.926644
+  },
+  {
+    "sig": "77HKr2hiW36Zcmu7ShDgSWtZFQ5CJKUKhaVNmQquFhsZwocNaA9Cn2dQGJsRbeB2zRysT2TqFuZFNfF9eAXgWcn",
+    "ts": 1727611250,
+    "date": "2024-09-29T12:00:50.000Z",
+    "mint": "LqWqAku4mRkYZAhz8FvwZovHxsiPuqsfj4veRgvZ3jk",
+    "side": "SELL",
+    "sol": 0.004773146,
+    "tokenQty": 20146.13465279
+  },
+  {
+    "sig": "4CndsV3cjLpUFE7SHa4Mn7pefbwuubohNWNPb7VyUBFSrmQYNfpip8X9aAWHLExH41cDXwcLEmKxQHwmHfpYdLz8",
+    "ts": 1727608420,
+    "date": "2024-09-29T11:13:40.000Z",
+    "mint": "LqWqAku4mRkYZAhz8FvwZovHxsiPuqsfj4veRgvZ3jk",
+    "side": "BUY",
+    "sol": 0.005,
+    "tokenQty": 17419.590850275
+  },
+  {
+    "sig": "5ZaKkCWhs6uLCK4esVWrrBcNdkq77hgAuDm5WbNSSPB4AF1KZmB4nDqPHjv5A8d7XXZiGpboU2C4mCa5iCMrD9US",
+    "ts": 1727608307,
+    "date": "2024-09-29T11:11:47.000Z",
+    "mint": "LqWqAku4mRkYZAhz8FvwZovHxsiPuqsfj4veRgvZ3jk",
+    "side": "BUY",
+    "sol": 0.0008,
+    "tokenQty": 2726.543802515
+  },
+  {
+    "sig": "2az7q3pgWSjkUcUCzTnwFMSgzDWf541HWiReBYyfe2Y7DzQiFD2WV1Fz44vxGXH3KcbhB7m31XydJTK3mYP4FBfc",
+    "ts": 1727544769,
+    "date": "2024-09-28T17:32:49.000Z",
+    "mint": "6DewgAYA1yhSfwZQ56pzq1FA7nvASgQ2dvyeUmfqpump",
+    "side": "SELL",
+    "sol": 0.00203928,
+    "tokenQty": 427.884563
+  },
+  {
+    "sig": "4XcA8SE4hVAgKe3qn7pa19zfzyA9mtzaoJAyD6Be2bhoYcyAhzkhpEX1xd28QAv6UxuEL6RnweBSv4dqoGwmMvU",
+    "ts": 1727535201,
+    "date": "2024-09-28T14:53:21.000Z",
+    "mint": "9cpSEmScegcVZuHfeUd9zi9DCFpZczyVBd1Nc8n4pump",
+    "side": "BUY",
+    "sol": 0.008,
+    "tokenQty": 19026.57932
+  },
+  {
+    "sig": "MBVG62P2fFfsxEaRJr7w7VcFXSQCd19xoQ9P9feBtvBdLsQAkXnaATqRUDvfugSFoiQK1EVVkX9ooU35Z5dEZHg",
+    "ts": 1727535060,
+    "date": "2024-09-28T14:51:00.000Z",
+    "mint": "H7pRPRmbg7YkUUJ2AakDUKuVRvZ5aEdvcyrgBG9Tpump",
+    "side": "SELL",
+    "sol": 0.0080649,
+    "tokenQty": 89561.548624
+  },
+  {
+    "sig": "28XwtV4AXDodWJfXoEyRps1G3RhYur6Dr3uUsjd5bHNLAJfAiYkNUgMmqb2Wf7zckLfyNHyjXqMhZyLsk4j9PEMu",
+    "ts": 1727533825,
+    "date": "2024-09-28T14:30:25.000Z",
+    "mint": "H7pRPRmbg7YkUUJ2AakDUKuVRvZ5aEdvcyrgBG9Tpump",
+    "side": "BUY",
+    "sol": 0.012,
+    "tokenQty": 89561.548624
+  },
+  {
+    "sig": "46qXeC6mYEpQJ8x8hWMMu1cQPXqmrotedgNyYWAHWLmUDyzGD9YGwLGrHv2d1k8V3bqFU7isBLWkxxvEf244CTdo",
+    "ts": 1727533629,
+    "date": "2024-09-28T14:27:09.000Z",
+    "mint": "8Vb11fvr9f7k74hrhNJEqjGq1hzgBH7FnuwGFbPppump",
+    "side": "SELL",
+    "sol": 0.009300278,
+    "tokenQty": 27009.519621
+  },
+  {
+    "sig": "29GM7aC43bfmN1rhMSe83Tf4mqSuTYJczsUQ4QQCLtiB65TUqUNuR3bJng8dSyRJSgT3HQNmmLQFikVgK7neBqfm",
+    "ts": 1727525311,
+    "date": "2024-09-28T12:08:31.000Z",
+    "mint": "8Vb11fvr9f7k74hrhNJEqjGq1hzgBH7FnuwGFbPppump",
+    "side": "BUY",
+    "sol": 0.015,
+    "tokenQty": 12398.777747
+  },
+  {
+    "sig": "3XjTzb1xMHwUBBApHixuMc8w9maLyVfCw8ZHyCdEbRykYbvSciwX2p78aepVYhUF3V3LHrn3x7MWbbzTLiWwhaSu",
+    "ts": 1727524991,
+    "date": "2024-09-28T12:03:11.000Z",
+    "mint": "8Vb11fvr9f7k74hrhNJEqjGq1hzgBH7FnuwGFbPppump",
+    "side": "BUY",
+    "sol": 0.005,
+    "tokenQty": 4320.122785
+  },
+  {
+    "sig": "3XQZwmfX5CrJTMhjfKVmG9cWLKbQvb8zmMboDVTyrpSfunTKXRqUyifGxjHs1bgiBpPav7VBVAYuCBMk2kk6DxXt",
+    "ts": 1727524791,
+    "date": "2024-09-28T11:59:51.000Z",
+    "mint": "8Vb11fvr9f7k74hrhNJEqjGq1hzgBH7FnuwGFbPppump",
+    "side": "BUY",
+    "sol": 0.01,
+    "tokenQty": 10290.619089
+  },
+  {
+    "sig": "25X9meKoftsnkdQEn44FBQU9ZBRp9ASz45ASXDQiP1Xu7smo5Aye9H5aS1DZTREEfZokfHrhDVybf4orYsa9Z4R8",
+    "ts": 1727523378,
+    "date": "2024-09-28T11:36:18.000Z",
+    "mint": "8Vb11fvr9f7k74hrhNJEqjGq1hzgBH7FnuwGFbPppump",
+    "side": "SELL",
+    "sol": 0.014325792,
+    "tokenQty": 21974.372363
+  },
+  {
+    "sig": "123Q4fanY2ken6LPXDoqFwnHBChwFixYbLj8iScqGKEn3kECSjpNtgGTBSwMU6V8DWPENRCQeB1cHNf5uHaCVh8i",
+    "ts": 1727522434,
+    "date": "2024-09-28T11:20:34.000Z",
+    "mint": "8Vb11fvr9f7k74hrhNJEqjGq1hzgBH7FnuwGFbPppump",
+    "side": "BUY",
+    "sol": 0.01,
+    "tokenQty": 21974.372363
+  },
+  {
+    "sig": "3RvA17Wgruu2orYCTK8shXs2Liv4NUQ1cKFs3XzFWa5iDViqdiY5xmFmJfAZdpwidtBFeBbM1t8fCPjBapTZZUb9",
+    "ts": 1727522233,
+    "date": "2024-09-28T11:17:13.000Z",
+    "mint": "CzQes1BCyevt5b6Ye4nEEuvEqEMCFFoJJKmnqEzBpump",
+    "side": "SELL",
+    "sol": 0.000196543,
+    "tokenQty": 6436.943819
+  },
+  {
+    "sig": "HafBzcoiZsLsUBz7MAgDncAnZ2cNM21iXbs8w4p59x3V79FxeXrmJ5NFTKYiXYGVCLUQqafj2XQGMak12Xw3XvS",
+    "ts": 1725304434,
+    "date": "2024-09-02T19:13:54.000Z",
+    "mint": "94xVTp3preRxCeVbukRY2JRhu2wiVFbVr5yJcXpBpump",
+    "side": "SELL",
+    "sol": 0.009008529,
+    "tokenQty": 47328.789061
+  },
+  {
+    "sig": "5mJGcZiwPuRQaEfy3Ct1GgzvoPX23XVUgy3zGo8CXVuEgoSu3LiGtaboYUv6wPQ1KFy7iZWYThZvgDFanqdcaKhL",
+    "ts": 1725297139,
+    "date": "2024-09-02T17:12:19.000Z",
+    "mint": "A9jLULrDSYZkBtKfvG44w8NWzvCN6rGLpoA3hY7TQ85k",
+    "side": "SELL",
+    "sol": 0.01131123,
+    "tokenQty": 6315.287718
+  },
+  {
+    "sig": "3jieWrsujfE9tCm88supLmEsqiiHGR7K3CXbF1kkooHNFMRaCx7oQmZgKJHqUNVBEqmhSB89s3RDEzfsFVXccS5r",
+    "ts": 1725294969,
+    "date": "2024-09-02T16:36:09.000Z",
+    "mint": "2pRyCoGmWHMj3w9rMDD4NYDknNpFBoq4ZKXYtzkppump",
+    "side": "SELL",
+    "sol": 0.00856634,
+    "tokenQty": 249271.103646
+  },
+  {
+    "sig": "35xx3gmgao3wyCxm8DMVYPFDgJgZrQeBYdtovFNT8vU8SgJyEvshYgjycaqf8AMMo7jTvjsJtuP1LyaNfprefmrR",
+    "ts": 1725282346,
+    "date": "2024-09-02T13:05:46.000Z",
+    "mint": "FnbKBPGsTS8Q5JAAFd9n8UDgdizZLkTzwFHB5F2sq5VU",
+    "side": "SELL",
+    "sol": 0.085549006,
+    "tokenQty": 473599.943242
+  },
+  {
+    "sig": "2Lwsx4UBTGAAvASGrpXfn8BVe5Gq5hdKezAjJy2Z7v4Ei1Rn31imUw83PjT9AW39r9YJTVS7ybHXUuGakJzzZ7nJ",
+    "ts": 1725265615,
+    "date": "2024-09-02T08:26:55.000Z",
+    "mint": "Brxenm2xpvzPB9YipKi7wToYymGtW8AtZNaCeHDEpump",
+    "side": "SELL",
+    "sol": 0.009362625,
+    "tokenQty": 24698.782146
+  }
+]
