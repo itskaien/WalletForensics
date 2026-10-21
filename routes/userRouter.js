@@ -1,6 +1,9 @@
 const { Router } = require("express");
 const rateLimit = require("express-rate-limit");
-const { usersSolanaInput } = require("../controllers/userController");
+const {
+  usersSolanaInput,
+  getWalletSwaps,
+} = require("../controllers/userController");
 
 const usersRouter = Router();
 
@@ -23,5 +26,6 @@ const rpcShieldLimiter = rateLimit({
 });
 
 usersRouter.post("/validate-solana", rpcShieldLimiter, usersSolanaInput);
+usersRouter.post("/wallet-swaps", getWalletSwaps);
 
 module.exports = usersRouter;

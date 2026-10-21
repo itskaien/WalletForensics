@@ -1,5 +1,26 @@
 const { PublicKey } = require("@solana/web3.js");
 const { connection } = require("../src/config/solana");
+const { getHeliusTransactions } = require("../services/heliusService");
+
+const getWalletSwaps = async (req, res) => {
+  try {
+    const { address } = req.body;
+    const swaps = await getHeliusTransactions(address);
+
+    return res.status(200).json({
+      success: true,
+      count: swaps.length,
+      swaps,
+    });
+  } catch (error) {
+    console.error("Failed to fetch wallet swaps:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      error: "FAILED_TO_FETCH_SWAPS",
+    });
+  }
+};
 
 const SOLANA_BASE58_REGEX = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
 const SYSTEM_PROGRAM_ID = "11111111111111111111111111111111";
@@ -155,7 +176,7 @@ async function validateForensicAddress(address) {
   }
 }
 
-exports.usersSolanaInput = async (req, res) => {
+const usersSolanaInput = async (req, res) => {
   const { address } = req.body;
 
   const result = await validateForensicAddress(address);
@@ -173,4 +194,9 @@ exports.usersSolanaInput = async (req, res) => {
     address,
     profile: result.profile,
   });
+};
+
+module.exports = {
+  usersSolanaInput,
+  getWalletSwaps,
 };
