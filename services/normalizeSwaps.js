@@ -2,11 +2,11 @@ const SOL_MINT = "So11111111111111111111111111111111111111112";
 const LAMPORTS_PER_SOL = 1_000_000_000;
 
 function normalizeSwaps(transactions, walletAddress) {
-  const successfulTransactions = transactions.filter(
-    (tx) => tx.transactionError == null,
+  const successfulSwaps = transactions.filter(
+    (tx) => tx.transactionError == null && tx.type === "SWAP",
   );
 
-  return successfulTransactions.flatMap((tx) => {
+  return successfulSwaps.flatMap((tx) => {
     const tokenMovements = (tx.tokenTransfers || [])
       .filter((transfer) => transfer.mint !== SOL_MINT)
       .filter(
