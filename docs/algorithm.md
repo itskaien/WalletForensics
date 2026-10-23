@@ -97,3 +97,12 @@
 - Database: save one row per scan, tied to the wallet address and a timestamp, with the stats, grades, and report. Don’t overwrite. The newest row also serves as the cache for repeat scans. Add a createdAt index on (address, createdAt)
 - localStorage: save the list of wallets this browser has scanned, with the scan time and a short result summary, so the user sees their own history without the server knowing who they are
 - Repeat scans: if the wallet’s newest on-chain signature hasn’t changed since the last stored scan, return the stored result instead of recalculating.
+
+# V2
+
+- FOMO detection
+- asymmetry ape
+
+// for each BUY: unitPrice = s.sol / s.tokenQty
+// compare to the previous BUY of the same mint within 24h
+// if unitPrice rose >50% → you were buying the pump
