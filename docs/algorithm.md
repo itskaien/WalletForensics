@@ -56,7 +56,7 @@
 
 - a loss is closed position pnlSol < -DUST_SOL
 - partial sells dont count
-- unsold bags stay in bag stats
+- unsold bags stay in bag stats (added im step 8)
 
 11. Revenge Trading:
 
