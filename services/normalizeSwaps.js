@@ -1,8 +1,7 @@
 const fs = require("node:fs/promises");
 const path = require("node:path");
 
-const SOL_MINT = "So11111111111111111111111111111111111111112";
-const LAMPORTS_PER_SOL = 1_000_000_000;
+const { SOL_MINT, LAMPORTS_PER_SOL } = require("../config");
 
 function getNativeDeltaSol(tx, walletAddress) {
   const accountData = Array.isArray(tx.accountData) ? tx.accountData : [];
@@ -196,7 +195,6 @@ function normalizeSwaps(transactions, walletAddress) {
     });
   }
 
-  // Oldest -> newest for Step 7. Missing timestamps go last.
   normalizedSwaps.sort((a, b) => {
     if (a.ts == null && b.ts == null) return 0;
     if (a.ts == null) return 1;

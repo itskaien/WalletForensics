@@ -1,6 +1,7 @@
 const { PublicKey } = require("@solana/web3.js");
 const { connection } = require("../src/config/solana");
 const { getHeliusTransactions } = require("../services/heliusService");
+const { SOLANA_BASE58_REGEX } = require("../middlewares/addressMiddleware");
 
 const getWalletSwaps = async (req, res) => {
   try {
@@ -22,7 +23,6 @@ const getWalletSwaps = async (req, res) => {
   }
 };
 
-const SOLANA_BASE58_REGEX = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/;
 const SYSTEM_PROGRAM_ID = "11111111111111111111111111111111";
 
 async function validateForensicAddress(address) {

@@ -4,6 +4,7 @@ const {
   usersSolanaInput,
   getWalletSwaps,
 } = require("../controllers/userController");
+const { requireValidAddress } = require("../middlewares/addressMiddleware");
 
 const usersRouter = Router();
 
@@ -25,7 +26,17 @@ const rpcShieldLimiter = rateLimit({
   skip: (req) => req.ip === "127.0.0.1" || req.ip === "::1",
 });
 
-usersRouter.post("/validate-solana", rpcShieldLimiter, usersSolanaInput);
-usersRouter.post("/wallet-swaps", getWalletSwaps);
+usersRouter.post(
+  "/validate-solana",
+  rpcShieldLimiter,
+  requireValidAddress,
+  usersSolanaInput,
+);
+usersRouter.post(
+  "/wallet-swaps",
+  rpcShieldLimiter,
+  requireValidAddress,
+  getWalletSwaps,
+);
 
 module.exports = usersRouter;

@@ -1,80 +1,61 @@
 const axios = require("axios");
 const { mkdir, writeFile } = require("node:fs/promises");
 const path = require("node:path");
+const { MAX_SWAPS } = require("../config");
+
+const LIMIT = 100;
+const MAX_PAGES = 100; // safety rail against infinite loops
+const CONTINUATION_RE = /parameter set to ([A-Za-z0-9]+)/;
 
 async function getHeliusTransactions(address) {
-  const MAX_SWAPS = 500;
-  const LIMIT = 100;
-  const MAX_PAGES = 100;
-
-  const url = `https://api-mainnet.helius-rpc.com/v0/addresses/${address}/transactions`;
+  const url = `https://api.helius.xyz/v0/addresses/${address}/transactions`;
 
   const swaps = [];
   const seenSignatures = new Set();
-  let beforeSignature;
+  let beforeSignature = null;
 
   for (let page = 0; page < MAX_PAGES && swaps.length < MAX_SWAPS; page++) {
     const params = {
       "api-key": process.env.HELIUS_API_KEY,
       limit: LIMIT,
       type: "SWAP",
-      ...(beforeSignature && {
-        "before-signature": beforeSignature,
-      }),
+      ...(beforeSignature && { "before-signature": beforeSignature }),
     };
 
-    let response;
+    const { data } = await axios.get(url, { params, timeout: 20_000 });
 
-    try {
-      response = await axios.get(url, { params });
-    } catch (error) {
-      const data = error.response?.data;
-      const message = data?.error;
+    if (data && typeof data === "object" && !Array.isArray(data)) {
+      const message = typeof data.error === "string" ? data.error : "";
+      const match = message.match(CONTINUATION_RE);
 
-      const match =
-        typeof message === "string" &&
-        message.match(/before-signature.*?([1-9A-HJ-NP-Za-km-z]{32,})/i);
-
-      if (match && match[1] !== beforeSignature) {
-        beforeSignature = match[1];
+      if (match && match[1] && match[1] !== beforeSignature) {
+        beforeSignature = match[1]; // skip ahead, keep searching older history
         continue;
       }
 
-      throw error;
+      throw new Error(`Helius returned an unexpected response: ${message}`);
     }
 
-    if (!Array.isArray(response.data)) {
+    if (!Array.isArray(data)) {
       throw new Error("Helius returned an unexpected response.");
     }
 
-    const transactions = response.data;
+    if (data.length === 0) break; // genuinely out of history
 
-    if (transactions.length === 0) {
-      break;
-    }
-
-    for (const transaction of transactions) {
-      if (!transaction.signature) continue;
-      if (seenSignatures.has(transaction.signature)) continue;
-
-      seenSignatures.add(transaction.signature);
-      swaps.push(transaction);
-
+    for (const tx of data) {
+      if (!tx.signature || seenSignatures.has(tx.signature)) continue;
+      seenSignatures.add(tx.signature);
+      swaps.push(tx);
       if (swaps.length >= MAX_SWAPS) break;
     }
 
-    const nextSignature = transactions[transactions.length - 1].signature;
-
-    if (!nextSignature || nextSignature === beforeSignature) {
-      break;
-    }
-
+    const nextSignature = data[data.length - 1].signature;
+    if (!nextSignature || nextSignature === beforeSignature) break;
     beforeSignature = nextSignature;
   }
 
   const dataDir = path.join(__dirname, "..", "data");
   await mkdir(dataDir, { recursive: true });
-
   await writeFile(
     path.join(dataDir, "swaps.json"),
     JSON.stringify(swaps, null, 2),

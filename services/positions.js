@@ -1,8 +1,7 @@
-const DUST_QTY = 1e-9;
-const DUST_SOL = 1e-9;
+const { DUST_QTY, DUST_SOL } = require("../config");
 
 function buildPositions(swaps) {
-  const state = new Map(); // mint -> running position
+  const state = new Map(); // mint, running position
   const closedPositions = [];
   const orphanSells = [];
 
