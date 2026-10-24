@@ -106,3 +106,5 @@
 // for each BUY: unitPrice = s.sol / s.tokenQty
 // compare to the previous BUY of the same mint within 24h
 // if unitPrice rose >50% → you were buying the pump
+
+v3 measures the event that hurts the port, and keeps the single-position view only as supporting detail.
