@@ -1,30 +1,31 @@
 const axios = require("axios");
 
 const { SOL_MINT } = require("../config");
-const BATCH_SIZE = 50; // Jupiter Price API v3 hard limit
+const BATCH_SIZE = 50;
 const BATCH_DELAY_MS = 1100;
 const PRICE_URL = "https://api.jup.ag/price/v3";
 
-function chunk(arr, size) {
-  const out = [];
-  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
-  return out;
+function chunk(values, size) {
+  const chunks = [];
+  for (let i = 0; i < values.length; i += size) {
+    chunks.push(values.slice(i, i + size));
+  }
+  return chunks;
 }
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function fetchPrices(mints) {
   if (!process.env.JUPITER_API_KEY) {
     throw new Error("JUPITER_API_KEY is not set");
   }
 
-  const unique = [...new Set(mints)];
+  const uniqueMints = [...new Set(mints)];
   const prices = {};
   const missing = [];
+  const batches = chunk(uniqueMints, BATCH_SIZE);
 
-  const batches = chunk(unique, BATCH_SIZE);
-
-  for (let i = 0; i < batches.length; i++) {
+  for (let i = 0; i < batches.length; i += 1) {
     const { data } = await axios.get(PRICE_URL, {
       params: { ids: batches[i].join(",") },
       headers: { "x-api-key": process.env.JUPITER_API_KEY },
@@ -49,73 +50,88 @@ async function fetchPrices(mints) {
 async function buildBags(openPositions) {
   if (!openPositions.length) {
     return {
+      status: "OK",
       bags: [],
-      deadBags: [],
+      unpricedBags: [],
       solUsdPrice: null,
       totalValueSol: 0,
       totalUnrealizedPnlSol: 0,
-      totalDeadCostBasisSol: 0,
+      totalUnpricedCostBasisSol: 0,
+      note: "No open positions inferred from the fetched swap history.",
     };
   }
 
-  const mints = openPositions.map((p) => p.mint);
-  const { prices, missing } = await fetchPrices([...mints, SOL_MINT]);
+  const { prices, missing } = await fetchPrices([
+    ...openPositions.map((position) => position.mint),
+    SOL_MINT,
+  ]);
 
   if (!(SOL_MINT in prices)) {
     throw new Error(
-      "Could not fetch SOL price, refusing to value bags without a unit",
+      "Could not fetch SOL price; open-bag SOL valuation is unavailable",
     );
   }
+
   const solUsdPrice = prices[SOL_MINT];
-
-  const deadSet = new Set(missing);
-
+  const unpricedSet = new Set(missing);
   const bags = [];
-  const deadBags = [];
+  const unpricedBags = [];
 
-  for (const p of openPositions) {
-    if (deadSet.has(p.mint)) {
-      deadBags.push({
-        mint: p.mint,
-        qty: p.qty,
-        costBasisSol: p.costBasisSol,
-        avgCostSol: p.avgCostSol,
-        openTs: p.openTs,
-        lastTs: p.lastTs,
+  for (const position of openPositions) {
+    if (unpricedSet.has(position.mint)) {
+      unpricedBags.push({
+        mint: position.mint,
+        qty: position.qty,
+        costBasisSol: position.costBasisSol,
+        avgCostSol: position.avgCostSol,
+        openTs: position.openTs,
+        lastTs: position.lastTs,
+        note: "No reliable Jupiter price was returned. This does not prove the token is dead.",
       });
       continue;
     }
 
-    const usdPrice = prices[p.mint];
-    const valueUsd = p.qty * usdPrice;
+    const usdPrice = prices[position.mint];
+    const valueUsd = position.qty * usdPrice;
     const valueSol = valueUsd / solUsdPrice;
-    const unrealizedPnlSol = valueSol - p.costBasisSol;
+    const unrealizedPnlSol = valueSol - position.costBasisSol;
 
     bags.push({
-      mint: p.mint,
-      qty: p.qty,
-      costBasisSol: p.costBasisSol,
-      avgCostSol: p.avgCostSol,
+      mint: position.mint,
+      qty: position.qty,
+      costBasisSol: position.costBasisSol,
+      avgCostSol: position.avgCostSol,
       usdPrice,
       valueUsd,
       valueSol,
       unrealizedPnlSol,
       pnlPct:
-        p.costBasisSol > 0 ? (unrealizedPnlSol / p.costBasisSol) * 100 : null,
-      openTs: p.openTs,
-      lastTs: p.lastTs,
+        position.costBasisSol > 0
+          ? (unrealizedPnlSol / position.costBasisSol) * 100
+          : null,
+      openTs: position.openTs,
+      lastTs: position.lastTs,
     });
   }
 
-  bags.sort((a, b) => a.unrealizedPnlSol - b.unrealizedPnlSol); // worst first
+  bags.sort((a, b) => a.unrealizedPnlSol - b.unrealizedPnlSol);
 
   return {
+    status: "OK",
     bags,
-    deadBags,
+    unpricedBags,
     solUsdPrice,
-    totalValueSol: bags.reduce((s, b) => s + b.valueSol, 0),
-    totalUnrealizedPnlSol: bags.reduce((s, b) => s + b.unrealizedPnlSol, 0),
-    totalDeadCostBasisSol: deadBags.reduce((s, b) => s + b.costBasisSol, 0),
+    totalValueSol: bags.reduce((sum, bag) => sum + bag.valueSol, 0),
+    totalUnrealizedPnlSol: bags.reduce(
+      (sum, bag) => sum + bag.unrealizedPnlSol,
+      0,
+    ),
+    totalUnpricedCostBasisSol: unpricedBags.reduce(
+      (sum, bag) => sum + bag.costBasisSol,
+      0,
+    ),
+    coverageWarning:
+      "Bag quantities are inferred from the fetched swap history and may be incomplete when history is capped.",
   };
 }
 

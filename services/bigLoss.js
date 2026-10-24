@@ -1,126 +1,203 @@
 const {
   DUST_SOL,
-  SIZE_APE_MULTIPLE,
-  BIG_LOSS_DAY_PCT,
-  MIN_ACTIVE_DAYS,
+  DUST_QTY,
+  BIG_LOSS_PCT,
+  LOCKOUT_SECONDS,
 } = require("../config");
+const { closeTs, byCloseTime } = require("./analysisUtils");
+const { getNativeSolBalanceAt } = require("./heliusBalance");
 
-function median(nums) {
-  const s = nums
-    .filter((n) => n != null && Number.isFinite(n))
-    .sort((a, b) => a - b);
-  if (!s.length) return null;
-  const mid = Math.floor(s.length / 2);
-  return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+// Average-cost replay used only to estimate open cost basis immediately before T.
+// It does not value open tokens at market price.
+function openCostBasisBefore(normalizedSwaps, timestamp) {
+  const states = new Map();
+
+  for (const swap of normalizedSwaps) {
+    if (!Number.isFinite(swap.ts)) continue;
+    if (swap.ts >= timestamp) break;
+    if (!(swap.tokenQty > 0) || !(swap.sol > 0)) continue;
+
+    const state = states.get(swap.mint) ?? { qty: 0, costSol: 0 };
+    if (swap.side === "BUY") {
+      state.qty += swap.tokenQty;
+      state.costSol += swap.sol;
+    } else if (swap.side === "SELL" && state.qty > DUST_QTY) {
+      const matchedQty = Math.min(swap.tokenQty, state.qty);
+      const removedCost = state.costSol * (matchedQty / state.qty);
+      state.qty -= matchedQty;
+      state.costSol = Math.max(0, state.costSol - removedCost);
+      if (state.qty <= DUST_QTY) {
+        state.qty = 0;
+        state.costSol = 0;
+      }
+    }
+    states.set(swap.mint, state);
+  }
+
+  let total = 0;
+  for (const state of states.values()) total += state.costSol;
+  return total;
 }
 
-function buildBigLossAnalysis({
-  closedPositions,
-  normalizedSwaps,
-  totalSolIn,
-}) {
-  const closed = closedPositions
-    .filter((p) => p.closeTs != null)
-    .sort((a, b) => a.closeTs - b.closeTs);
+function buildRealizedDrawdown(closed) {
+  let equitySol = 0;
+  let peakSol = 0;
+  let peakIndex = -1;
+  let max = {
+    sol: 0,
+    peakIndex: -1,
+    troughIndex: -1,
+  };
 
-  let peak = 0;
-  let peakDate = null;
-  let equity = 0;
-  let maxDD = { sol: 0, peakDate: null, troughDate: null };
-
-  for (const p of closed) {
-    equity += p.pnlSol;
-    if (equity > peak) {
-      peak = equity;
-      peakDate = p.closeDate;
+  closed.forEach((position, index) => {
+    equitySol += position.pnlSol;
+    if (equitySol > peakSol) {
+      peakSol = equitySol;
+      peakIndex = index;
     }
-    const dd = peak - equity;
-    if (dd > maxDD.sol) {
-      maxDD = { sol: dd, peakDate, troughDate: p.closeDate };
+    const drawdownSol = peakSol - equitySol;
+    if (drawdownSol > max.sol) {
+      max = { sol: drawdownSol, peakIndex, troughIndex: index };
     }
-  }
+  });
 
-  const ddTokens = new Set(
-    closed
-      .filter(
-        (p) => p.closeDate >= maxDD.peakDate && p.closeDate <= maxDD.troughDate,
-      )
-      .map((p) => p.mint),
-  );
-
-  const maxDDPct = totalSolIn > 0 ? maxDD.sol / totalSolIn : null;
-
-  let worstRun = null;
-  let run = [];
-  for (const p of closed) {
-    if (p.pnlSol < -DUST_SOL) {
-      run.push(p);
-      if (!worstRun || run.length > worstRun.positions.length)
-        worstRun = { positions: [...run] };
-    } else if (p.pnlSol > DUST_SOL) {
-      run = [];
-    }
-  }
-
-  let worstConsecutiveLossRun = null;
-  if (worstRun) {
-    const total = worstRun.positions.reduce((s, p) => s + p.pnlSol, 0);
-    worstConsecutiveLossRun = {
-      consecutiveLosses: worstRun.positions.length,
-      tokensInvolved: [...new Set(worstRun.positions.map((p) => p.mint))]
-        .length,
-      totalSol: total,
-      startDate: worstRun.positions[0].closeDate,
-      endDate: worstRun.positions[worstRun.positions.length - 1].closeDate,
-      pctOfTotalIn: totalSolIn > 0 ? Math.abs(total) / totalSolIn : null,
-    };
-  }
-
-  const sized = closedPositions.filter((p) => p.tradedSolIn > DUST_SOL);
-  const medianSizeSol = median(sized.map((p) => p.tradedSolIn));
-  const losses = closedPositions
-    .filter((p) => p.pnlSol < -DUST_SOL)
-    .sort((a, b) => a.pnlSol - b.pnlSol);
-  const biggest = losses[0] ?? null;
-
-  const catastrophicPct = worstConsecutiveLossRun?.pctOfTotalIn ?? maxDDPct;
+  const involved =
+    max.troughIndex >= 0
+      ? closed.slice(max.peakIndex + 1, max.troughIndex + 1)
+      : [];
+  const peakPosition = max.peakIndex >= 0 ? closed[max.peakIndex] : null;
+  const troughPosition = max.troughIndex >= 0 ? closed[max.troughIndex] : null;
 
   return {
-    maxDrawdown: {
-      sol: maxDD.sol,
-      pctOfTotalIn: maxDDPct,
-      peakDate: maxDD.peakDate,
-      troughDate: maxDD.troughDate,
-      tokensInvolved: ddTokens.size,
-      activeDays: [
-        ...new Set(
-          normalizedSwaps.map((s) =>
-            new Date(s.ts * 1000).toISOString().slice(0, 10),
-          ),
-        ),
-      ].length,
-    },
-    worstConsecutiveLossRun,
-    isCatastrophic:
-      catastrophicPct != null && catastrophicPct >= BIG_LOSS_DAY_PCT,
-    biggestSingleLoss: biggest
-      ? {
-          mint: biggest.mint,
-          pnlSol: biggest.pnlSol,
-          sizeSol: biggest.tradedSolIn,
-          openDate: biggest.openDate,
-          closeDate: biggest.closeDate,
-          holdSeconds: biggest.holdSeconds,
-        }
-      : null,
-    medianPositionSizeSol: medianSizeSol,
-    sizeMultipleOfMedian:
-      biggest && medianSizeSol ? biggest.tradedSolIn / medianSizeSol : null,
-    wasOversizedApe:
-      biggest && medianSizeSol
-        ? biggest.tradedSolIn / medianSizeSol >= SIZE_APE_MULTIPLE
-        : false,
+    name: "closedPositionRealizedPnlDrawdown",
+    sol: max.sol,
+    peakIsInitialBaseline: max.peakIndex === -1,
+    peakDate: peakPosition?.closeDate ?? null,
+    troughDate: troughPosition?.closeDate ?? null,
+    tokensInvolved: new Set(involved.map((p) => p.mint)).size,
+    positionsInvolved: involved.length,
+    warning:
+      "This is not total portfolio drawdown: open-bag market values and external transfers are excluded.",
   };
 }
 
-module.exports = { buildBigLossAnalysis };
+async function buildBigLossAnalysis({
+  walletAddress,
+  closedPositions,
+  normalizedSwaps,
+  balanceProvider = getNativeSolBalanceAt,
+}) {
+  const closed = closedPositions
+    .filter((p) => closeTs(p) != null)
+    .sort(byCloseTime);
+  const swaps = [...normalizedSwaps].sort((a, b) => a.ts - b.ts);
+  const maxDrawdown = buildRealizedDrawdown(closed);
+
+  let equitySol = 0;
+  let peakSol = 0;
+  let activeLockoutUntil = null;
+  let balanceLookupFailures = 0;
+  const lossEvents = [];
+  const lockouts = [];
+
+  for (const position of closed) {
+    equitySol += position.pnlSol;
+    peakSol = Math.max(peakSol, equitySol);
+    if (position.pnlSol >= -DUST_SOL) continue;
+
+    const triggerTs = closeTs(position);
+    const drawdownSol = peakSol - equitySol;
+    const event = {
+      triggerTs,
+      triggerDate:
+        position.closeDate ?? new Date(triggerTs * 1000).toISOString(),
+      triggerMint: position.mint,
+      eventPositionPnlSol: position.pnlSol,
+      crossTokenDrawdownSol: drawdownSol,
+      nativeSolBefore: null,
+      openCostBasisBeforeSol: null,
+      capitalBeforeSol: null,
+      lossPctOfCapitalBefore: null,
+      capitalStatus: "UNAVAILABLE",
+      lockoutStarted: false,
+    };
+
+    try {
+      const beforeTimestamp = Math.max(0, Math.floor(triggerTs) - 1);
+      const [nativeSolBefore, openBasis] = await Promise.all([
+        balanceProvider(walletAddress, beforeTimestamp),
+        Promise.resolve(openCostBasisBefore(swaps, triggerTs)),
+      ]);
+      if (!(nativeSolBefore >= 0) || !Number.isFinite(nativeSolBefore)) {
+        throw new Error("Balance provider returned an invalid SOL balance");
+      }
+      const capitalBeforeSol = nativeSolBefore + openBasis;
+      event.nativeSolBefore = nativeSolBefore;
+      event.openCostBasisBeforeSol = openBasis;
+      event.capitalBeforeSol = capitalBeforeSol;
+      event.capitalStatus = "OK";
+      if (capitalBeforeSol > 0) {
+        event.lossPctOfCapitalBefore = drawdownSol / capitalBeforeSol;
+      }
+    } catch (error) {
+      balanceLookupFailures += 1;
+      event.capitalError = error.message;
+    }
+
+    const qualifies =
+      event.lossPctOfCapitalBefore != null &&
+      event.lossPctOfCapitalBefore >= BIG_LOSS_PCT;
+    const outsideExistingLockout =
+      activeLockoutUntil == null || triggerTs >= activeLockoutUntil;
+
+    if (qualifies && outsideExistingLockout) {
+      const endTs = triggerTs + LOCKOUT_SECONDS;
+      const tradesDuringLockout = swaps.filter(
+        // The lockout begins after the triggering close; do not count that close itself.
+        (swap) => swap.ts > triggerTs && swap.ts < endTs,
+      );
+      const lockout = {
+        startTs: triggerTs,
+        endTs,
+        startDate: event.triggerDate,
+        endDate: new Date(endTs * 1000).toISOString(),
+        lossPctOfCapitalBefore: event.lossPctOfCapitalBefore,
+        tradesDuringLockout: tradesDuringLockout.length,
+        buysDuringLockout: tradesDuringLockout.filter((s) => s.side === "BUY")
+          .length,
+        sellsDuringLockout: tradesDuringLockout.filter((s) => s.side === "SELL")
+          .length,
+        advice: `A cross-token realized drawdown reached ${(BIG_LOSS_PCT * 100).toFixed(0)}% of measured capital. Take a ${(LOCKOUT_SECONDS / 3600).toFixed(0)}-hour lockout before new trades.`,
+      };
+      lockouts.push(lockout);
+      event.lockoutStarted = true;
+      activeLockoutUntil = endTs;
+    }
+    lossEvents.push(event);
+  }
+
+  const measuredPcts = lossEvents
+    .map((event) => event.lossPctOfCapitalBefore)
+    .filter((pct) => pct != null);
+
+  return {
+    metricName: "crossTokenRealizedDrawdown",
+    capitalDefinition:
+      "native SOL immediately before the loss close + reconstructed open-position cost basis immediately before it",
+    maxDrawdown,
+    maxObservedLossPct: measuredPcts.length ? Math.max(...measuredPcts) : null,
+    bigLossThresholdPct: BIG_LOSS_PCT,
+    lockoutSeconds: LOCKOUT_SECONDS,
+    lockouts,
+    lossEvents,
+    balanceLookupFailures,
+    coverageWarning:
+      "Open cost basis reconstructed from capped swap history may be incomplete; failed balance lookups are never treated as zero.",
+  };
+}
+
+module.exports = {
+  buildBigLossAnalysis,
+  openCostBasisBefore,
+  buildRealizedDrawdown,
+};

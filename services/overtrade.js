@@ -1,144 +1,102 @@
-const {
-  DUST_SOL,
-  OVERTRADE_LOSS_STREAK,
-  MIN_ACTIVE_DAYS,
-} = require("../config");
+const { DUST_SOL, OVERTRADE_FACTOR, MIN_ACTIVE_DAYS } = require("../config");
+const { median, utcDay, closeTs, byCloseTime } = require("./analysisUtils");
 
-function median(nums) {
-  const s = nums
-    .filter((n) => n != null && Number.isFinite(n))
-    .sort((a, b) => a - b);
-  if (!s.length) return null;
-  const mid = Math.floor(s.length / 2);
-  return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
-}
-
-function dayKey(ts) {
-  return new Date(ts * 1000).toISOString().slice(0, 10);
-}
-
-function perSellPnl(swaps) {
-  const state = new Map();
-  const outcomes = new Map();
-  for (const s of swaps) {
-    if (s.side === "BUY") {
-      const st = state.get(s.mint) || { qty: 0, cost: 0 };
-      st.qty += s.tokenQty;
-      st.cost += s.sol;
-      state.set(s.mint, st);
-      continue;
-    }
-    const st = state.get(s.mint);
-    if (!st || st.qty <= 0) continue;
-    const matched = Math.min(s.tokenQty, st.qty);
-    const ratio = matched / s.tokenQty;
-    const proceeds = s.sol * ratio;
-    const cost = (st.cost / st.qty) * matched;
-    outcomes.set(s.sig, proceeds - cost);
-    st.qty -= matched;
-    st.cost -= cost;
+function buildOvertradingAnalysis({ normalizedSwaps, closedPositions }) {
+  const swapsByDay = new Map();
+  for (const swap of normalizedSwaps) {
+    if (!Number.isFinite(swap.ts)) continue;
+    const day = utcDay(swap.ts);
+    if (!swapsByDay.has(day)) swapsByDay.set(day, []);
+    swapsByDay.get(day).push(swap);
   }
-  return outcomes;
-}
 
-function buildOvertradingAnalysis(normalizedSwaps) {
-  const outcomes = perSellPnl(normalizedSwaps);
+  const activeDays = swapsByDay.size;
+  const medianTradesPerDay = median(
+    [...swapsByDay.values()].map((swaps) => swaps.length),
+  );
 
-  const dayMap = new Map();
-  for (const s of normalizedSwaps) {
-    if (s.ts == null) continue;
-    const key = dayKey(s.ts);
-    if (!dayMap.has(key)) dayMap.set(key, []);
-    dayMap.get(key).push(s);
-  }
-  const dayList = [...dayMap.entries()]
-    .map(([date, swaps]) => ({ date, swaps }))
-    .sort((a, b) => a.date.localeCompare(b.date));
+  const base = {
+    activeDays,
+    medianTradesPerDay,
+    highVolumeThreshold:
+      medianTradesPerDay == null ? null : medianTradesPerDay * OVERTRADE_FACTOR,
+    losingDays: 0,
+    highVolumeDays: [],
+    softNoteDays: [],
+    flaggedDays: [],
+    overtradingPct: null,
+  };
 
-  const activeDays = dayList.length;
-  const med = median(dayList.map((d) => d.swaps.length));
   if (activeDays < MIN_ACTIVE_DAYS) {
-    return {
-      activeDays,
-      medianTradesPerDay: med,
-      elevatedDays: null,
-      flaggedDays: [],
-      overtradingPct: null,
-    };
+    return { ...base, status: "NOT_ENOUGH_DATA" };
   }
 
-  let elevatedDays = 0;
+  const closesByDay = new Map();
+  for (const position of closedPositions) {
+    const ts = closeTs(position);
+    if (ts == null) continue;
+    const day = utcDay(ts);
+    if (!closesByDay.has(day)) closesByDay.set(day, []);
+    closesByDay.get(day).push(position);
+  }
+
+  let losingDays = 0;
+  const highVolumeDays = [];
+  const softNoteDays = [];
   const flaggedDays = [];
 
-  let withinWins = 0,
-    withinSells = 0,
-    beyondWins = 0,
-    beyondSells = 0;
+  for (const [date, swaps] of swapsByDay) {
+    const dailyCount = swaps.length;
+    const closed = (closesByDay.get(date) ?? []).sort(byCloseTime);
+    const dailyClosedPnlSol = closed.reduce((sum, p) => sum + p.pnlSol, 0);
+    const isLosingDay = closed.length > 0 && dailyClosedPnlSol < -DUST_SOL;
+    if (isLosingDay) losingDays += 1;
 
-  for (const day of dayList) {
-    const elevated = day.swaps.length > med;
-    if (elevated) elevatedDays++;
+    const isHighVolume = dailyCount > medianTradesPerDay * OVERTRADE_FACTOR;
+    if (!isHighVolume) continue;
 
-    let run = 0;
-    let maxRun = 0;
-    let runSol = 0;
-    let maxRunSol = 0;
-    for (const s of day.swaps) {
-      if (s.side !== "BUY" && outcomes.has(s.sig)) {
-        const idx = day.swaps.indexOf(s);
-        const pnl = outcomes.get(s.sig);
-        const isLoss = pnl < -DUST_SOL;
-        const isWin = pnl > DUST_SOL;
+    const finalTwo = closed.slice(-2);
+    const hardFlag =
+      finalTwo.length === 2 && finalTwo.every((p) => p.pnlSol < -DUST_SOL);
+    const item = {
+      date,
+      trades: dailyCount,
+      yourNorm: medianTradesPerDay,
+      closedPositions: closed.length,
+      dailyClosedPnlSol,
+      finalTwo: finalTwo.map((p) => ({
+        mint: p.mint,
+        pnlSol: p.pnlSol,
+        closeDate: p.closeDate,
+      })),
+    };
+    highVolumeDays.push(item);
 
-        // quality decay buckets
-        if (idx < med) {
-          withinSells++;
-          if (isWin) withinWins++;
-        } else {
-          beyondSells++;
-          if (isWin) beyondWins++;
-        }
-
-        if (isLoss) {
-          run++;
-          runSol += pnl;
-        } else {
-          run = 0;
-          runSol = 0;
-        }
-        if (run > maxRun) {
-          maxRun = run;
-          maxRunSol = runSol;
-        }
-      }
-    }
-
-    if (elevated && maxRun >= OVERTRADE_LOSS_STREAK) {
+    if (hardFlag) {
       flaggedDays.push({
-        date: day.date,
-        trades: day.swaps.length,
-        yourNorm: med,
-        consecutiveLosses: maxRun,
-        lossRunSol: maxRunSol,
-        dayNetSol: day.swaps.reduce(
-          (n, s) => n + (s.side === "BUY" ? -s.sol : s.sol),
-          0,
-        ),
-        advice: `You normally take ${med} trades/day. On ${day.date} you took ${day.swaps.length}, and ${maxRun} losses stacked up as you pushed (${maxRunSol.toFixed(4)} SOL). Past your norm, your edge disappears. Cap the day at ${med} trades, walk away after ${OVERTRADE_LOSS_STREAK} straight losses.`,
+        ...item,
+        advice:
+          "This high-activity day ended with two losing closed positions. Take it easy and stop adding trades for the session.",
+      });
+    } else {
+      softNoteDays.push({
+        ...item,
+        note: "Activity was above your norm, but the required final-two-loss pattern was absent. Take it slower; no hard overtrading flag.",
       });
     }
   }
 
   return {
+    status: "OK",
     activeDays,
-    medianTradesPerDay: med,
-    elevatedDays,
+    medianTradesPerDay,
+    highVolumeThreshold: medianTradesPerDay * OVERTRADE_FACTOR,
+    losingDays,
+    highVolumeDays,
+    softNoteDays,
     flaggedDays,
-    overtradingPct: elevatedDays ? flaggedDays.length / elevatedDays : null,
-    qualityBeyondNorm: {
-      withinNormWinRate: withinSells ? withinWins / withinSells : null,
-      beyondNormWinRate: beyondSells ? beyondWins / beyondSells : null,
-    },
+    // Exact step-14 denominator: losing days, not high-volume days.
+    overtradingPct: losingDays ? flaggedDays.length / losingDays : null,
   };
 }
 

@@ -1,4 +1,4 @@
-const { DUST_QTY, DUST_SOL } = require("../config");
+const { DUST_QTY } = require("../config");
 
 function buildPositions(swaps) {
   const state = new Map(); // mint, running position
@@ -105,4 +105,4 @@ function buildPositions(swaps) {
   return { closedPositions, openPositions, orphanSells };
 }
 
-module.exports = { buildPositions, DUST_QTY, DUST_SOL };
+module.exports = { buildPositions };

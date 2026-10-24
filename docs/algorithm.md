@@ -82,14 +82,19 @@
 - If at or above 10%, advise a 24h lockout and count trades made during it.
 - Check whether Helius gives balance changes per transaction.
 
-14. Grades:
+14. Fomo (added later):
+
+- flags repeat buys of the same token at higher price (chasing)
+-
+
+15. Grades:
 
 - revenge % = losses inside flagged streaks ÷ all losses.
 - Overtrading % = flagged days ÷ losing days.
 - Below MIN_LOSSES, return “not enough data”.
 - Bands: - 0 to 10% → Clean - 10 to 30% → Watch it - 30 to 60% → Bad - 60% and up → (High Risk, Gambling)
 
-15. Report:
+16. Report:
 
 - v1 sends only the computed numbers to DeepSeek to write text.
 - save to the postgres cache

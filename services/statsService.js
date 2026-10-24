@@ -1,46 +1,38 @@
-const { DUST_SOL } = require("../config");
+// kinda confirm
 
-function median(nums) {
-  const s = nums
-    .filter((n) => n != null && Number.isFinite(n))
-    .sort((a, b) => a - b);
-  if (!s.length) return null;
-  const mid = Math.floor(s.length / 2);
-  return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
-}
+const { DUST_SOL } = require("../config");
+const { median, utcDay } = require("./analysisUtils");
 
 function buildStats({ closedPositions, normalizedSwaps }) {
   const wins = closedPositions.filter((p) => p.pnlSol > DUST_SOL);
   const losses = closedPositions.filter((p) => p.pnlSol < -DUST_SOL);
   const breakeven = closedPositions.length - wins.length - losses.length;
 
-  const netPnlSol = closedPositions.reduce((s, p) => s + p.pnlSol, 0);
-  const avgWinSol = wins.length
-    ? wins.reduce((s, p) => s + p.pnlSol, 0) / wins.length
-    : null;
-  const avgLossSol = losses.length
-    ? losses.reduce((s, p) => s + p.pnlSol, 0) / losses.length
-    : null;
+  const closedPositionPnlSol = closedPositions.reduce(
+    (sum, p) => sum + p.pnlSol,
+    0,
+  );
 
-  const winHoldMedian = median(wins.map((p) => p.holdSeconds));
-  const lossHoldMedian = median(losses.map((p) => p.holdSeconds));
+  let totalBuySol = 0;
+  let totalSellSol = 0;
+  const timestamps = [];
+  const activeDays = new Set();
 
-  const ts = normalizedSwaps.map((s) => s.ts).filter((t) => t != null);
-  let spanDays = null;
-  let tradesPerDay = null;
-  if (ts.length >= 2) {
-    spanDays = (Math.max(...ts) - Math.min(...ts)) / 86400;
-    tradesPerDay = spanDays > 0 ? normalizedSwaps.length / spanDays : null;
+  for (const swap of normalizedSwaps) {
+    if (swap.side === "BUY") totalBuySol += swap.sol;
+    else if (swap.side === "SELL") totalSellSol += swap.sol;
+    if (Number.isFinite(swap.ts)) {
+      timestamps.push(swap.ts);
+      activeDays.add(utcDay(swap.ts));
+    }
   }
 
-  let totalSolIn = 0;
-  let totalSolOut = 0;
-  for (const s of normalizedSwaps) {
-    if (s.side === "BUY") totalSolIn += s.sol;
-    else totalSolOut += s.sol;
-  }
-
-  const aggregateSol = totalSolIn / totalSolOut;
+  const firstTs = timestamps.length ? Math.min(...timestamps) : null;
+  const lastTs = timestamps.length ? Math.max(...timestamps) : null;
+  const calendarSpanDays =
+    firstTs != null && lastTs != null
+      ? Math.floor((lastTs - firstTs) / 86400) + 1
+      : null;
 
   return {
     closedCount: closedPositions.length,
@@ -50,20 +42,40 @@ function buildStats({ closedPositions, normalizedSwaps }) {
     winRate: closedPositions.length
       ? wins.length / closedPositions.length
       : null,
-    netPnlSol,
-    aggregateSol,
-    avgWinSol,
-    avgLossSol,
-    winHoldMedianSeconds: winHoldMedian,
-    lossHoldMedianSeconds: lossHoldMedian,
-    tradingSpanDays: spanDays,
-    tradesPerDay,
-    firstTradeDate: ts.length
-      ? new Date(Math.min(...ts) * 1000).toISOString()
+
+    totalBuySol,
+    totalSellSol,
+
+    totalSolIn: totalBuySol,
+    totalSolOut: totalSellSol,
+    buySellRatio: totalSellSol > 0 ? totalBuySol / totalSellSol : null,
+
+    closedPositionPnlSol,
+
+    netPnlSol: closedPositionPnlSol,
+    avgWinSol: wins.length
+      ? wins.reduce((sum, p) => sum + p.pnlSol, 0) / wins.length
       : null,
-    lastTradeDate: ts.length
-      ? new Date(Math.max(...ts) * 1000).toISOString()
+    avgLossSol: losses.length
+      ? losses.reduce((sum, p) => sum + p.pnlSol, 0) / losses.length
       : null,
+    winHoldMedianSeconds: median(wins.map((p) => p.holdSeconds)),
+    lossHoldMedianSeconds: median(losses.map((p) => p.holdSeconds)),
+
+    activeDays: activeDays.size,
+    calendarSpanDays,
+
+    tradesPerDay: activeDays.size
+      ? normalizedSwaps.length / activeDays.size
+      : null,
+
+    tradesPerCalendarSpanDay: calendarSpanDays
+      ? normalizedSwaps.length / calendarSpanDays
+      : null,
+    firstTradeDate:
+      firstTs != null ? new Date(firstTs * 1000).toISOString() : null,
+    lastTradeDate:
+      lastTs != null ? new Date(lastTs * 1000).toISOString() : null,
   };
 }
 

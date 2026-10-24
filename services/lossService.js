@@ -1,31 +1,21 @@
 const { DUST_SOL } = require("../config");
-
-function median(nums) {
-  const s = nums
-    .filter((n) => n != null && Number.isFinite(n))
-    .sort((a, b) => a - b);
-  if (!s.length) return null;
-  const mid = Math.floor(s.length / 2);
-  return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
-}
+const { median } = require("./analysisUtils");
 
 function buildLossAnalysis(closedPositions) {
   const losses = closedPositions
     .filter((p) => p.pnlSol < -DUST_SOL)
-    .sort((a, b) => a.pnlSol - b.pnlSol); // worst first
+    .sort((a, b) => a.pnlSol - b.pnlSol);
 
-  const totalLostSol = losses.reduce((s, p) => s + p.pnlSol, 0);
-  const medianLossSol = median(losses.map((p) => p.pnlSol));
+  const totalLostSol = losses.reduce((sum, p) => sum + p.pnlSol, 0);
+  const top3LossSol = losses.slice(0, 3).reduce((sum, p) => sum + p.pnlSol, 0);
   const biggest = losses[0] ?? null;
-
-  const top3 = losses.slice(0, 3).reduce((s, p) => s + p.pnlSol, 0);
-  const top3Share = totalLostSol < 0 ? top3 / totalLostSol : null; // both negative = positive ratio
 
   return {
     lossCount: losses.length,
     totalLostSol,
-    medianLossSol,
+    medianLossSol: median(losses.map((p) => p.pnlSol)),
     avgLossSol: losses.length ? totalLostSol / losses.length : null,
+    top3ShareOfLosses: totalLostSol < 0 ? top3LossSol / totalLostSol : null,
     biggestLoss: biggest
       ? {
           mint: biggest.mint,
@@ -33,9 +23,9 @@ function buildLossAnalysis(closedPositions) {
           openDate: biggest.openDate,
           closeDate: biggest.closeDate,
           holdSeconds: biggest.holdSeconds,
+          tradedSolIn: biggest.tradedSolIn,
         }
       : null,
-    top3ShareOfLosses: top3Share, // 0.6 = "three trades caused 60% of all losses"
     losses: losses.map((p) => ({
       mint: p.mint,
       pnlSol: p.pnlSol,
