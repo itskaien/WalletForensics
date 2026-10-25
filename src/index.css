@@ -1,4 +1,5 @@
 :root {
+  /* Light Theme (Default) */
   --bg-main: #f9f9f9;
   --bg-card: #ffffff;
   --text-main: #111111;
@@ -11,6 +12,20 @@
   --warning: #ed6c02;
 }
 
+[data-theme="dark"] {
+  /* Dark Theme Overrides */
+  --bg-main: #0f0f11;
+  --bg-card: #1a1a1d;
+  --text-main: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --border: #27272a;
+  --silver: #3f3f46;
+  --accent: #f4f4f5;
+  --success: #4ade80;
+  --danger: #f87171;
+  --warning: #fbbf24;
+}
+
 body {
   margin: 0;
   font-family:
@@ -19,111 +34,74 @@ body {
   background-color: var(--bg-main);
   color: var(--text-main);
   line-height: 1.6;
+  transition:
+    background-color 0.3s,
+    color 0.3s; /* Smooth theme switch */
 }
 
+/* Layout */
 .app-container {
-  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 1rem;
 }
-
-.header {
-  text-align: center;
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   margin-bottom: 3rem;
 }
 
-.header h1 {
-  font-size: 2.5rem;
+/* Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo h1 {
+  font-size: 1.5rem;
+  margin: 0;
   font-weight: 600;
-  letter-spacing: -0.05rem;
+}
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.hero h2 {
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
 
-.header p {
-  color: var(--text-muted);
-  font-size: 1.1rem;
-}
-
+/* Cards & Grids */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-  margin-bottom: 1.5rem;
 }
-
-.input-group {
-  display: flex;
-  gap: 1rem;
-}
-
-.input-group input {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--silver);
-  border-radius: 6px;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.input-group input:focus {
-  border-color: var(--accent);
-}
-
-.input-group button {
-  padding: 0.75rem 1.5rem;
-  background-color: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.input-group button:hover:not(:disabled) {
-  background-color: #000;
-}
-
-.input-group button:disabled {
-  background-color: var(--silver);
-  cursor: not-allowed;
-}
-
-.toggle-group {
-  display: flex;
-  gap: 2rem;
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.toggle-group label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
-.error-message {
-  background-color: #fee;
-  color: var(--danger);
-  padding: 1rem;
-  border-radius: 6px;
-  border: 1px solid #fcc;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.results-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--silver);
-  padding-bottom: 0.5rem;
-}
-
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -131,45 +109,38 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.stat-card,
-.grade-card {
+/* Forms */
+.input-group {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1.5rem 1rem;
+  gap: 1rem;
+}
+.input-group input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--silver);
+  border-radius: 6px;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+.input-group button {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: var(--bg-card);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.input-group button:hover {
+  opacity: 0.9;
 }
 
-.label {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-}
-
-.value {
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-.value.positive {
-  color: var(--success);
-}
-.value.negative {
-  color: var(--danger);
-}
-
+/* Grades */
 .grade {
-  font-size: 1.2rem;
   font-weight: 600;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
-  background-color: var(--bg-main);
-  border: 1px solid var(--border);
+  border: 1px solid;
 }
-
 .grade-clean {
   color: var(--success);
   border-color: var(--success);
@@ -178,64 +149,40 @@ body {
   color: var(--warning);
   border-color: var(--warning);
 }
-.grade-bad {
+.grade-bad,
+.grade-high-risk {
   color: var(--danger);
   border-color: var(--danger);
 }
-.grade-high-risk {
-  color: #fff;
-  background-color: var(--danger);
-  border-color: var(--danger);
+.value.positive {
+  color: var(--success);
+}
+.value.negative {
+  color: var(--danger);
 }
 
-.report-card pre {
-  white-space: pre-wrap;
-  font-family: inherit;
-  background: var(--bg-main);
-  padding: 1rem;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  font-size: 0.95rem;
-}
-
-.docs-section {
-  margin-top: 3rem;
-  background: var(--bg-main);
-  border: 1px dashed var(--silver);
-  box-shadow: none;
-}
-
-.docs-section h3 {
-  margin-top: 0;
-}
-
-.docs-section ul {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-
-.docs-section li {
-  margin-bottom: 0.5rem;
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
   color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
-.markdown-body {
-  background: var(--bg-main);
-  padding: 1.5rem;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-}
-
-.markdown-body h3 {
-  margin-top: 0;
-  border-bottom: 1px solid var(--silver);
-  padding-bottom: 0.5rem;
-}
-
-.markdown-body ul {
-  padding-left: 1.5rem;
-}
-
-.markdown-body li {
-  margin-bottom: 0.25rem;
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+  .input-group {
+    flex-direction: column;
+  } /* Stack input and button */
+  .toggle-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .grid-container {
+    grid-template-columns: 1fr;
+  } /* Single column on mobile */
 }
