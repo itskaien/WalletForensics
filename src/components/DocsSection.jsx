@@ -80,7 +80,6 @@ export default function DocsSection() {
         </div>
       </section>
 
-      {/* METRICS: Keep cards but make them consistent */}
       <section id="features" className="features-section">
         <div className="section-header">
           <h3>Metrics Explained</h3>
