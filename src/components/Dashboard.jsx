@@ -4,9 +4,25 @@ import ReactMarkdown from "react-markdown";
 export default function Dashboard({ data, isOwner }) {
   if (!data) return null;
 
+  const handleShare = () => {
+    const worstGrade = data.grades.bigLoss.grade;
+    const text = `I just ran my Solana wallet through Wallet Forensics.\n\nMy biggest issue? Big Loss (${worstGrade}) 😭\n\nCheck yours here:`;
+    const url = "https://wallet-forensics.vercel.app";
+
+    window.open(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+      "_blank",
+    );
+  };
+
   return (
     <section className="dashboard">
-      <h2>{isOwner ? "Your Profile" : "Wallet Profile"}</h2>
+      <div className="dashboard-header">
+        <h2>{isOwner ? "Your Profile" : "Wallet Profile"}</h2>
+        <button onClick={handleShare} className="share-btn">
+          Share on X
+        </button>
+      </div>
 
       <div className="grid-container">
         <div className="card stat-card">
@@ -24,7 +40,6 @@ export default function Dashboard({ data, isOwner }) {
           </span>
         </div>
 
-        {/* Grades */}
         <div className="card grade-card">
           <span className="label">Revenge Trading</span>
           <span
