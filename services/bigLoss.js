@@ -132,6 +132,22 @@ async function buildBigLossAnalysis({
         throw new Error("Balance provider returned an invalid SOL balance");
       }
       const capitalBeforeSol = nativeSolBefore + openBasis;
+      if (capitalBeforeSol < 0.01) {
+        // Using MIN_CAPITAL_SOL
+        event.capitalStatus = "UNRELIABLE";
+        event.capitalWarning = "Capital too small to compute reliable loss %.";
+        event.lossPctOfCapitalBefore = null;
+      } else {
+        event.lossPctOfCapitalBefore = drawdownSol / capitalBeforeSol;
+        event.lossPctOfCapitalBeforeCapped = Math.min(
+          1,
+          event.lossPctOfCapitalBefore,
+        );
+        event.capitalWarning =
+          event.lossPctOfCapitalBefore > 1
+            ? "Loss % > 100%. Historical capital likely incomplete."
+            : null;
+      }
       event.nativeSolBefore = nativeSolBefore;
       event.openCostBasisBeforeSol = openBasis;
       event.capitalBeforeSol = capitalBeforeSol;

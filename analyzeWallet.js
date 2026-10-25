@@ -37,7 +37,7 @@ async function analyzeWallet(walletAddress, rawTransactions) {
     normalizedSwaps,
   });
   const fomo = buildFomoAnalysis(normalizedSwaps);
-  const grades = buildGrades({ revenge, overtrade });
+  const grades = buildGrades({ revenge, overtrade, bigLoss, fomo });
 
   return {
     stats,

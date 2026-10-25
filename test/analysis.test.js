@@ -137,20 +137,37 @@ test("FOMO module detects only repeat-buy chasing and remains a separate metric"
 });
 
 test("step 14 uses exact bands and MIN_LOSSES guard", () => {
-  assert.equal(band(0).grade, "Clean");
-  assert.equal(band(0.09999).grade, "Clean");
-  assert.equal(band(0.1).grade, "Watch it");
-  assert.equal(band(0.3).grade, "Bad");
-  assert.equal(band(0.6).grade, "High Risk / Gambling");
-  assert.equal(band(1.2).grade, "High Risk / Gambling");
-  assert.equal(
-    buildGrades({ revenge: { totalLosses: 4 } }).status,
-    "NOT_ENOUGH_DATA",
-  );
+  // Revenge/Overtrading Bands (10/30/60)
+  const defaultBands = { watch: 0.1, bad: 0.3, high: 0.6 };
+  assert.equal(band(0, defaultBands).grade, "Clean");
+  assert.equal(band(0.09999, defaultBands).grade, "Clean");
+  assert.equal(band(0.1, defaultBands).grade, "Watch it");
+  assert.equal(band(0.3, defaultBands).grade, "Bad");
+  assert.equal(band(0.6, defaultBands).grade, "High Risk");
+  assert.equal(band(1.2, defaultBands).grade, "High Risk");
+
+  // Test the 100% cap
+  assert.equal(band(1.2, defaultBands).pct, 1.2);
+  assert.equal(band(1.2, defaultBands).gradePct, 1);
+  assert.equal(band(1.2, defaultBands).capped, true);
+
+  // Test FOMO Bands (5/15/30)
+  const fomoBands = { watch: 0.05, bad: 0.15, high: 0.3 };
+  assert.equal(band(0.04, fomoBands).grade, "Clean");
+  assert.equal(band(0.1, fomoBands).grade, "Watch it");
+
+  // Test MIN_LOSSES guard
+  assert.equal(buildGrades({ revenge: { totalLosses: 4 } }).status, "PARTIAL");
+
   const result = buildGrades({
     revenge: { totalLosses: 5, revengePct: 0.1, lossesInFlaggedStreaks: 1 },
     overtrade: { overtradingPct: 0.3, flaggedDays: [1], losingDays: 3 },
+    fomo: { pctOfBuyVolumeChased: 0.2 },
+    bigLoss: { maxObservedLossPct: 0.15 },
   });
+
   assert.equal(result.revengeTrading.grade, "Watch it");
   assert.equal(result.overtrading.grade, "Bad");
+  assert.equal(result.fomo.grade, "Bad");
+  assert.equal(result.bigLoss.grade, "Watch it");
 });

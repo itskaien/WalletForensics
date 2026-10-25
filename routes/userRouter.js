@@ -3,6 +3,7 @@ const rateLimit = require("express-rate-limit");
 const {
   usersSolanaInput,
   getWalletSwaps,
+  getWalletReport,
 } = require("../controllers/userController");
 const { requireValidAddress } = require("../middlewares/addressMiddleware");
 
@@ -37,6 +38,12 @@ usersRouter.post(
   rpcShieldLimiter,
   requireValidAddress,
   getWalletSwaps,
+);
+usersRouter.post(
+  "/wallet-report",
+  rpcShieldLimiter,
+  requireValidAddress,
+  getWalletReport,
 );
 
 module.exports = usersRouter;

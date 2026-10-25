@@ -2,6 +2,8 @@ const { PublicKey } = require("@solana/web3.js");
 const { connection } = require("../src/config/solana");
 const { getHeliusTransactions } = require("../services/heliusService");
 const { SOLANA_BASE58_REGEX } = require("../middlewares/addressMiddleware");
+const { analyzeWallet } = require("../analyzeWallet");
+const { getOrCreateScan } = require("../services/reportService");
 
 const getWalletSwaps = async (req, res) => {
   try {
@@ -15,10 +17,34 @@ const getWalletSwaps = async (req, res) => {
     });
   } catch (error) {
     console.error("Failed to fetch wallet swaps:", error.message);
-
     return res.status(500).json({
       success: false,
       error: "FAILED_TO_FETCH_SWAPS",
+    });
+  }
+};
+
+const getWalletReport = async (req, res) => {
+  try {
+    const { address } = req.body;
+
+    const rawTransactions = await getHeliusTransactions(address);
+    const result = await getOrCreateScan({
+      address,
+      rawTransactions,
+      analyzeFn: analyzeWallet,
+    });
+
+    return res.status(200).json({
+      success: true,
+      cached: result.cached,
+      data: result,
+    });
+  } catch (error) {
+    console.error("Failed to generate report:", error.message);
+    return res.status(500).json({
+      success: false,
+      error: "FAILED_TO_GENERATE_REPORT",
     });
   }
 };
@@ -199,4 +225,5 @@ const usersSolanaInput = async (req, res) => {
 module.exports = {
   usersSolanaInput,
   getWalletSwaps,
+  getWalletReport,
 };
