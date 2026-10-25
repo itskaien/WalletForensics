@@ -1,8 +1,13 @@
-const express = require("express");
-const router = express.Router();
+const { Router } = require("express");
+const indexRouter = Router();
 
-router.get("/", (req, res) => {
-  res.send("Hello World!");
+indexRouter.get("/", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    service: "Wallet Forensics API",
+    message: "Server is running. Point requests to /api/wallet-report",
+    version: "1.0.0",
+  });
 });
 
-module.exports = router;
+module.exports = indexRouter;
