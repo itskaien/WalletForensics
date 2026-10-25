@@ -1,40 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 :root {
-  /* Light Theme */
+  /* Light Theme – High contrast, neutral */
   --bg-main: #ffffff;
   --bg-subtle: #f8fafc;
   --bg-card: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
+  --text-main: #0f172a; /* near-black, 15:1 on white */
+  --text-muted: #475569; /* slate-600, 7.3:1 on white – passes WCAG AA */
+  --border: #cbd5e1; /* slate-300, visible but not harsh */
   --border-strong: #0f172a;
   --accent: #0f172a;
-  --accent-hover: #1e293b;
   --accent-text: #ffffff;
-  --success: #10b981;
-  --danger: #ef4444;
-  --warning: #f59e0b;
+  --success: #0f766e; /* deeper green, better contrast */
+  --danger: #b91c1c; /* deeper red, better contrast */
+  --warning: #b45309; /* deeper amber */
   --radius: 8px;
   --font-sans: "Plus Jakarta Sans", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
 [data-theme="dark"] {
-  /* Dark Theme */
+  /* Dark Theme – same hierarchy, inverted */
   --bg-main: #09090b;
   --bg-subtle: #18181b;
   --bg-card: #18181b;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --border: #27272a;
+  --text-main: #f8fafc; /* near-white */
+  --text-muted: #94a3b8; /* slate-400, 7.5:1 on dark */
+  --border: #334155;
   --border-strong: #f8fafc;
   --accent: #f8fafc;
-  --accent-hover: #e2e8f0;
   --accent-text: #09090b;
-  --success: #22c55e;
-  --danger: #ef4444;
-  --warning: #f59e0b;
+  --success: #34d399;
+  --danger: #f87171;
+  --warning: #fbbf24;
 }
 
 * {
@@ -48,12 +46,9 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  scroll-behavior: smooth;
 }
 
-/* Layout */
 .app-container {
   display: flex;
   flex-direction: column;
@@ -131,26 +126,21 @@ main {
   display: none;
 }
 
-/* --- HERO SECTION --- */
+/* Hero */
 .hero-section {
   border-bottom: 1px solid var(--border);
   padding: 6rem 1.5rem;
-  background: var(--bg-main);
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .hero-container {
   width: 100%;
   max-width: 600px;
 }
-
 .audit-form {
   width: 100%;
 }
-
-/* Form Input */
 .input-wrapper {
   display: flex;
   border: 1px solid var(--border-strong);
@@ -159,7 +149,6 @@ main {
   margin-bottom: 1rem;
   background: var(--bg-main);
 }
-
 .input-wrapper input {
   flex: 1;
   padding: 1rem 1.25rem;
@@ -170,7 +159,6 @@ main {
   font-size: 0.9rem;
   outline: none;
 }
-
 .input-wrapper button {
   padding: 0 1.5rem;
   background: var(--accent);
@@ -179,18 +167,12 @@ main {
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: opacity 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-width: 120px;
 }
-
 .input-wrapper button:hover {
   opacity: 0.85;
 }
 
-/* Mode Selector */
 .mode-selector {
   display: flex;
   justify-content: center;
@@ -198,7 +180,6 @@ main {
   font-family: var(--font-mono);
   font-size: 0.8rem;
 }
-
 .mode-selector button {
   background: transparent;
   border: none;
@@ -206,19 +187,28 @@ main {
   padding: 0.5rem 0;
   cursor: pointer;
   border-bottom: 1px solid transparent;
-  transition: all 0.15s;
 }
-
 .mode-selector button:hover {
   color: var(--text-main);
 }
-
 .mode-selector button.active {
   color: var(--text-main);
   border-bottom-color: var(--border-strong);
 }
 
-/* --- DASHBOARD & GRIDS --- */
+.hero-help {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+}
+.hero-help a {
+  color: var(--text-main);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Dashboard */
 .dashboard {
   max-width: 1100px;
   margin: 0 auto;
@@ -228,7 +218,6 @@ main {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 2rem;
-  letter-spacing: -0.02em;
 }
 .grid-container {
   display: grid;
@@ -244,9 +233,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-.stat-card,
-.grade-card {
   align-items: flex-start;
   text-align: left;
 }
@@ -260,7 +246,6 @@ main {
   font-size: 1.75rem;
   font-weight: 600;
   font-family: var(--font-mono);
-  letter-spacing: -0.03em;
 }
 .grade {
   font-size: 1rem;
@@ -268,7 +253,6 @@ main {
   padding: 0.25rem 0.5rem;
   border: 1px solid;
   border-radius: var(--radius);
-  display: inline-block;
   width: max-content;
   font-family: var(--font-mono);
   margin-top: 0.25rem;
@@ -287,7 +271,7 @@ main {
   border-color: var(--danger);
 }
 
-/* Markdown Report */
+/* Markdown */
 .report-card {
   margin-bottom: 2rem;
   border: 1px solid var(--border);
@@ -305,18 +289,22 @@ main {
   font-size: 0.95rem;
 }
 
-/* --- FEATURES SECTION (CARDS) --- */
-.features-section {
-  padding: 5rem 1.5rem;
+/* Docs Wrapper */
+.docs-wrapper {
   background: var(--bg-subtle);
   border-top: 1px solid var(--border);
+}
+
+/* Guide Section – Vertical Timeline */
+.guide-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+  border-bottom: 1px solid var(--border);
 }
 .section-header {
   text-align: center;
   margin-bottom: 3rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .section-header h3 {
   font-size: 1.5rem;
@@ -328,19 +316,86 @@ main {
   font-size: 1rem;
   margin: 0;
 }
-.features-grid {
+
+.guide-timeline {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-left: 2.5rem;
+}
+.guide-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.guide-node {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+.guide-node:last-child {
+  margin-bottom: 0;
+}
+
+.guide-marker {
+  position: absolute;
+  left: -2.5rem;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--bg-main);
+  border: 2px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-main);
+  transform: translateX(-50%);
+  margin-left: 1rem;
+}
+
+.guide-content {
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.guide-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--text-main);
+}
+.guide-content p {
+  margin: 0 0 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.guide-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Features – Cards */
+.features-section {
   max-width: 1100px;
   margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+.features-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
 .feature-card {
-  background: var(--bg-card);
+  background: var(--bg-main);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 .feature-card h4 {
   font-size: 1.1rem;
@@ -354,7 +409,7 @@ main {
   margin: 0;
 }
 
-/* --- FOOTER --- */
+/* Footer */
 .app-footer {
   border-top: 1px solid var(--border);
   background: var(--bg-main);
@@ -391,7 +446,6 @@ main {
   margin: 0 0 1rem;
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: var(--text-main);
 }
 .footer-links a {
@@ -417,7 +471,7 @@ main {
 .error-message {
   max-width: 1100px;
   margin: 0 auto 2rem;
-  background: rgba(239, 68, 68, 0.1);
+  background: rgba(185, 28, 28, 0.1);
   color: var(--danger);
   padding: 1rem;
   border-radius: var(--radius);
@@ -425,7 +479,7 @@ main {
   text-align: center;
 }
 
-/* --- RESPONSIVE MOBILE --- */
+/* Mobile */
 @media (max-width: 900px) {
   .nav-links {
     display: none;
@@ -457,10 +511,6 @@ main {
   .footer-container {
     flex-direction: column;
   }
-  .footer-links {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
 }
 
 @media (max-width: 600px) {
@@ -478,5 +528,13 @@ main {
   }
   .grid-container {
     grid-template-columns: 1fr;
+  }
+  .guide-timeline {
+    padding-left: 2rem;
+  }
+  .guide-marker {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.85rem;
   }
 }

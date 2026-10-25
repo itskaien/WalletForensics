@@ -31,16 +31,20 @@ export default function Hero({
               className={isOwner ? "active" : ""}
               onClick={() => setIsOwner(true)}
             >
-              Self Audit
+              My Wallet
             </button>
             <button
               type="button"
               className={!isOwner ? "active" : ""}
               onClick={() => setIsOwner(false)}
             >
-              External Research
+              Another Wallet
             </button>
           </div>
+
+          <p className="hero-help">
+            New here? <a href="#guide">Read the guide</a>.
+          </p>
         </form>
       </div>
     </section>

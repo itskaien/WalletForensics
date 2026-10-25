@@ -12,26 +12,17 @@ export default function Header({ toggleTheme, currentTheme }) {
         </div>
 
         <nav className="nav-links">
-          <a href="#features">Features</a>
-          <a href="#docs">Docs</a>
-          <a
-            href="https://github.com/itskaien/WalletForensics.git"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="#guide">Guide</a>
+          <a href="#features">Metrics</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer">
             GitHub
           </a>
         </nav>
 
         <div className="nav-actions">
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
+          <button className="theme-toggle" onClick={toggleTheme}>
             {currentTheme === "light" ? "🌙" : "☀️"}
           </button>
-
           <button
             className="hamburger"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -41,14 +32,13 @@ export default function Header({ toggleTheme, currentTheme }) {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
         <div className="mobile-menu">
-          <a href="#features" onClick={() => setIsMenuOpen(false)}>
-            Features
+          <a href="#guide" onClick={() => setIsMenuOpen(false)}>
+            Guide
           </a>
-          <a href="#docs" onClick={() => setIsMenuOpen(false)}>
-            Docs
+          <a href="#features" onClick={() => setIsMenuOpen(false)}>
+            Metrics
           </a>
           <a
             href="https://github.com/itskaien/WalletForensics.git"
