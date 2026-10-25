@@ -39,7 +39,7 @@ export default function Hero({
               className={!isOwner ? "active" : ""}
               onClick={() => setIsOwner(false)}
             >
-              Another Wallet
+              External Wallet
             </button>
           </div>
 
