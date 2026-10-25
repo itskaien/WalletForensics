@@ -21,8 +21,7 @@ function App() {
   const toggleTheme = () =>
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
-  const handleScan = async (e) => {
-    e.preventDefault();
+  const runScan = async (targetAddress) => {
     setLoading(true);
     setData(null);
     setError(null);
@@ -32,7 +31,7 @@ function App() {
       const response = await fetch(`${API_URL}/api/wallet-report`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ address }),
+        body: JSON.stringify({ address: targetAddress }),
       });
 
       const result = await response.json();
@@ -49,6 +48,17 @@ function App() {
     }
   };
 
+  const handleScan = (e) => {
+    e.preventDefault();
+    runScan(address);
+  };
+
+  const handleDemo = () => {
+    const demoAddress = "BGr6P4TmHV5Rpt4zPPCz9znPkqyTMPTouDUSFFzXtXAZ";
+    setAddress(demoAddress);
+    runScan(demoAddress);
+  };
+
   return (
     <div className="app-container">
       <Header toggleTheme={toggleTheme} currentTheme={theme} />
@@ -60,6 +70,7 @@ function App() {
           isOwner={isOwner}
           setIsOwner={setIsOwner}
           handleScan={handleScan}
+          handleDemo={handleDemo}
           loading={loading}
         />
 
@@ -74,4 +85,5 @@ function App() {
     </div>
   );
 }
+
 export default App;

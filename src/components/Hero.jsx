@@ -6,6 +6,7 @@ export default function Hero({
   isOwner,
   setIsOwner,
   handleScan,
+  handleDemo,
   loading,
 }) {
   return (
@@ -38,13 +39,23 @@ export default function Hero({
               className={!isOwner ? "active" : ""}
               onClick={() => setIsOwner(false)}
             >
-              External Wallet
+              Another Wallet
             </button>
           </div>
 
-          <p className="hero-help">
-            New here? <a href="#guide">Read the guide</a>.
-          </p>
+          <div className="hero-actions">
+            <p className="hero-help">
+              New here? <a href="#guide">Read the guide</a>.
+            </p>
+            <button
+              type="button"
+              onClick={handleDemo}
+              className="demo-btn"
+              disabled={loading}
+            >
+              Try Demo Wallet
+            </button>
+          </div>
         </form>
       </div>
     </section>
