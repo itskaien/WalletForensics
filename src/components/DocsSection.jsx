@@ -11,8 +11,8 @@ export default function DocsSection() {
             "You lost 5 SOL").
           </p>
           <p>
-            <strong>Another Wallet:</strong> The report uses third-person (e.g.,
-            "This wallet lost 5 SOL").
+            <strong>External Wallet:</strong> The report uses third-person
+            (e.g., "This wallet lost 5 SOL").
           </p>
         </>
       ),

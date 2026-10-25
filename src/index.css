@@ -1,31 +1,30 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
 :root {
-  /* Light Theme – High contrast, neutral */
+  /* Light Theme */
   --bg-main: #ffffff;
   --bg-subtle: #f8fafc;
   --bg-card: #ffffff;
-  --text-main: #0f172a; /* near-black, 15:1 on white */
-  --text-muted: #475569; /* slate-600, 7.3:1 on white – passes WCAG AA */
-  --border: #cbd5e1; /* slate-300, visible but not harsh */
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --border: #cbd5e1;
   --border-strong: #0f172a;
   --accent: #0f172a;
   --accent-text: #ffffff;
-  --success: #0f766e; /* deeper green, better contrast */
-  --danger: #b91c1c; /* deeper red, better contrast */
-  --warning: #b45309; /* deeper amber */
+  --success: #0f766e;
+  --danger: #b91c1c;
+  --warning: #b45309;
   --radius: 8px;
   --font-sans: "Plus Jakarta Sans", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
 }
 
 [data-theme="dark"] {
-  /* Dark Theme – same hierarchy, inverted */
+  /* Dark Theme */
   --bg-main: #09090b;
   --bg-subtle: #18181b;
   --bg-card: #18181b;
-  --text-main: #f8fafc; /* near-white */
-  --text-muted: #94a3b8; /* slate-400, 7.5:1 on dark */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
   --border: #334155;
   --border-strong: #f8fafc;
   --accent: #f8fafc;
@@ -155,8 +154,7 @@ main {
   border: none;
   background: transparent;
   color: var(--text-main);
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   outline: none;
 }
 .input-wrapper button {
@@ -165,7 +163,7 @@ main {
   color: var(--accent-text) !important;
   border: none;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   cursor: pointer;
   min-width: 120px;
 }
@@ -177,8 +175,7 @@ main {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 .mode-selector button {
   background: transparent;
@@ -187,6 +184,7 @@ main {
   padding: 0.5rem 0;
   cursor: pointer;
   border-bottom: 1px solid transparent;
+  font-weight: 500;
 }
 .mode-selector button:hover {
   color: var(--text-main);
@@ -237,15 +235,15 @@ main {
   text-align: left;
 }
 .label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
 }
 .value {
   font-size: 1.75rem;
-  font-weight: 600;
-  font-family: var(--font-mono);
+  font-weight: 700;
 }
 .grade {
   font-size: 1rem;
@@ -254,7 +252,6 @@ main {
   border: 1px solid;
   border-radius: var(--radius);
   width: max-content;
-  font-family: var(--font-mono);
   margin-top: 0.25rem;
 }
 .grade-clean {
@@ -295,7 +292,7 @@ main {
   border-top: 1px solid var(--border);
 }
 
-/* Guide Section – Vertical Timeline */
+/* Guide Section */
 .guide-section {
   max-width: 1100px;
   margin: 0 auto;
@@ -352,13 +349,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-main);
   transform: translateX(-50%);
   margin-left: 1rem;
 }
-
 .guide-content {
   background: var(--bg-main);
   border: 1px solid var(--border);
@@ -380,7 +375,7 @@ main {
   margin-bottom: 0;
 }
 
-/* Features – Cards */
+/* Features */
 .features-section {
   max-width: 1100px;
   margin: 0 auto;
@@ -401,7 +396,6 @@ main {
   font-size: 1.1rem;
   font-weight: 600;
   margin: 0 0 0.5rem;
-  font-family: var(--font-mono);
 }
 .feature-card p {
   font-size: 0.95rem;
@@ -447,6 +441,7 @@ main {
   font-size: 0.85rem;
   text-transform: uppercase;
   color: var(--text-main);
+  font-weight: 700;
 }
 .footer-links a {
   display: block;
