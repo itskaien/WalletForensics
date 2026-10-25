@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:api": "vitest run test/api.test.js",
+    "test:math": "node --test test/analysis.test.js",
+    "test": "npm run test:math && npm run test:api"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.10.1",
