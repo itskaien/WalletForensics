@@ -2,6 +2,13 @@
 
 On-chain behavioral analysis for Solana traders. Wallet Forensics fetches transaction history for any Solana wallet and runs it through custom algorithmic detectors to grade trading psychology—identifying patterns like Revenge Trading, Overtrading, Drawdowns, and FOMO.
 
+## 🌐 Live Links
+
+- **Frontend App (Vercel):** [wallet-forensics.vercel.app](https://wallet-forensics.vercel.app/)
+- **Backend API (Render):** [walletforensics.onrender.com](https://walletforensics.onrender.com)
+
+_(Note: The backend is hosted on Render's free tier. If the app hasn't been used in 15 minutes, the first scan may take 30-50 seconds to wake up the server)._
+
 ## 🚀 Features
 
 - **Cryptographic Validation:** Verifies addresses using `@solana/web3.js` (32-byte length, ed25519 curve check, and on-chain RPC existence) before scanning.
@@ -11,6 +18,8 @@ On-chain behavioral analysis for Solana traders. Wallet Forensics fetches transa
 - **FOMO Detection:** Identifies when a user bought a token at a significantly higher price (+50%) than their previous entry within 24h.
 - **AI Narrative:** Uses OpenAI (`gpt-4o-mini`) to generate a readable summary of the raw data.
 - **Database Caching:** Scans are cached in PostgreSQL based on the latest transaction signature. Repeat scans on the same wallet return instantly without hitting external APIs.
+- **One-Click Demo:** Includes a built-in demo wallet so users can test the platform instantly without needing a high-volume address.
+- **Share Results:** Users can share their behavioral grades directly to X (Twitter) with a single click.
 
 ## 🛠 Tech Stack
 
@@ -18,7 +27,7 @@ On-chain behavioral analysis for Solana traders. Wallet Forensics fetches transa
 - **Backend:** Node.js, Express, Prisma ORM
 - **Database:** PostgreSQL
 - **Solana Integration:** `@solana/web3.js`
-- **External APIs:** Helius (Transactions), Jupiter (Prices), OpenAI (Narrative)
+- **External APIs:** Helius (Transactions & RPC), Jupiter (Prices), OpenAI (Narrative)
 - **Testing:** Node.js Native Test Runner, Vitest, Supertest
 
 ## 🏗 Architecture Flow
@@ -50,7 +59,7 @@ DATABASE_URL="postgresql://user:password@localhost:5432/walletforensics"
 HELIUS_API_KEY="your_helius_key"
 JUPITER_API_KEY="your_jupiter_key"
 OPENAI_API_KEY="your_openai_key"
-SOLANA_RPC_URL="https://api.mainnet-beta.solana.com"
+HELIUS_RPC_URL="https://mainnet.helius-rpc.com/?api-key=your_helius_key"
 Run Prisma migrations and start the server:
 
 bash
@@ -76,27 +85,9 @@ npm run test:math
 # Run only the API integration tests (Vitest + Supertest)
 npm run test:api
 🚢 Deployment
-Backend (Render)
-Create a PostgreSQL database on Render. Copy the Internal Database URL.
+Backend (Render): Deployed as a Web Service with a PostgreSQL instance. Build Command: npm install --production=false && npx prisma generate && npx prisma migrate deploy.
 
-Create a new Web Service on Render and connect your GitHub repository.
-
-Set Build Command: npm install --production=false && npx prisma generate
-
-Set Pre-Deploy Command: npx prisma migrate deploy
-
-Set Start Command: node server.js
-
-Add all .env variables to the Render Environment tab.
-
-Frontend (Vercel)
-Import your GitHub repository into Vercel.
-
-Set Framework Preset to Vite.
-
-Add an Environment Variable: VITE_API_URL (value is your deployed Render URL).
-
-Click Deploy.
+Frontend (Vercel): Deployed as a Vite application. VITE_API_URL environment variable points to the Render backend.
 
 📄 License
 MIT License. Copyright (c) 2026 kaien.
