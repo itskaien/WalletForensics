@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+.agents/
+.claude/
+.windsurf/
 .env
 
 # Editor directories and files
@@ -26,3 +29,4 @@ dist-ssr
 *.sw?
 
 /src/generated/prisma
+generated/
