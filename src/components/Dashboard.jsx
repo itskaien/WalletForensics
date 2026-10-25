@@ -1,5 +1,5 @@
 import React from "react";
-import ReactMarkdown from "react-markdown"; // <-- Imported here
+import ReactMarkdown from "react-markdown";
 
 export default function Dashboard({ data, isOwner }) {
   if (!data) return null;
@@ -9,7 +9,6 @@ export default function Dashboard({ data, isOwner }) {
       <h2>{isOwner ? "Your Profile" : "Wallet Profile"}</h2>
 
       <div className="grid-container">
-        {/* Basic Stats */}
         <div className="card stat-card">
           <span className="label">Win Rate</span>
           <span className="value">
@@ -63,7 +62,6 @@ export default function Dashboard({ data, isOwner }) {
         </div>
       </div>
 
-      {/* AI Report using React Markdown */}
       <div className="card report-card">
         <h3>AI Forensic Report</h3>
         <div className="markdown-body">

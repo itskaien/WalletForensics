@@ -10,14 +10,17 @@ export default function Hero({
 }) {
   return (
     <section className="hero">
+      <div className="hero-badge">v1.0 is now live</div>
       <h2>Deep behavioral analysis for Solana traders.</h2>
-      <p>Understand your trading psychology through on-chain data.</p>
+      <p className="hero-subtitle">
+        Understand your trading psychology through on-chain data.
+      </p>
 
       <form onSubmit={handleScan} className="card form-section">
         <div className="input-group">
           <input
             type="text"
-            placeholder="Enter Solana Wallet Address..."
+            placeholder="Enter Solana Wallet Address (e.g., BGr6...)"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
